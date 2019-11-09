@@ -2,7 +2,7 @@ package com.puzzlebench.yelp_aac.repository
 
 import com.puzzlebench.yelp_aac.data.local.LocalDataBaseBusiness
 import com.puzzlebench.yelp_aac.data.remote.RemoteFetchSwitzerlandBusinesses
-import com.puzzlebench.yelp_aac.presentation.model.BussinesState
+import com.puzzlebench.yelp_aac.repository.model.BussinesState
 
 class BusinessRepositoryImpl constructor(
     private val remoteFetchSwitzerlandBusinesses: RemoteFetchSwitzerlandBusinesses,

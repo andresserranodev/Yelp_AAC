@@ -4,8 +4,8 @@ import com.puzzlebench.yelp_aac.data.local.room.dao.CategoriesDao
 import com.puzzlebench.yelp_aac.data.local.room.dao.PhotoDao
 import com.puzzlebench.yelp_aac.data.mapper.BusinessDetailMapper
 import com.puzzlebench.yelp_aac.data.mapper.UNDEFINED_ERROR_LOCAL_DATA_BASE_BUSINESS_DETAILS
-import com.puzzlebench.yelp_aac.presentation.model.BusinessDetails
-import com.puzzlebench.yelp_aac.presentation.model.BusinessDetailsState
+import com.puzzlebench.yelp_aac.repository.model.BusinessDetails
+import com.puzzlebench.yelp_aac.repository.model.BusinessDetailsState
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext

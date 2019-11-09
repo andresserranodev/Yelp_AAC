@@ -2,7 +2,7 @@ package com.puzzlebench.yelp_aac.repository
 
 import com.puzzlebench.yelp_aac.data.local.LocalDataBaseBusinessDetail
 import com.puzzlebench.yelp_aac.data.remote.RemoteFetchBusinessDetailsById
-import com.puzzlebench.yelp_aac.presentation.model.BusinessDetailsState
+import com.puzzlebench.yelp_aac.repository.model.BusinessDetailsState
 
 class BusinessDetailsRepositoryImpl constructor(
     private val remoteFetchBusinessDetailsById: RemoteFetchBusinessDetailsById,

@@ -4,7 +4,7 @@ import com.puzzlebench.yelp_aac.DummyBusinessDetailsFactory.getDummyBusinessDeta
 import com.puzzlebench.yelp_aac.DummyBusinessDetailsFactory.getDummyListCategoriesEntity
 import com.puzzlebench.yelp_aac.DummyBusinessDetailsFactory.getDummyListPhotosEntity
 import com.puzzlebench.yelp_aac.data.remote.retrofit.BusinessDetailResponse
-import com.puzzlebench.yelp_aac.presentation.model.BusinessDetails
+import com.puzzlebench.yelp_aac.repository.model.BusinessDetails
 import junit.framework.Assert
 import org.junit.Assert.assertEquals
 import org.junit.Before

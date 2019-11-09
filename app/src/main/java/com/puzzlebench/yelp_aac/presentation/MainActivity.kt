@@ -3,10 +3,6 @@ package com.puzzlebench.yelp_aac.presentation
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.puzzlebench.yelp_aac.R
-import com.puzzlebench.yelp_aac.ServiceLocator
-import com.puzzlebench.yelp_aac.data.local.LocalDataBaseBusinessDetail
-import com.puzzlebench.yelp_aac.data.remote.RemoteFetchBusinessDetailsById
-import com.puzzlebench.yelp_aac.presentation.model.BusinessDetailsState
 import com.puzzlebench.yelp_aac.repository.BusinessDetailsRepository
 import com.puzzlebench.yelp_aac.repository.BusinessRepository
 import kotlinx.android.synthetic.main.activity_main.*

@@ -1,4 +1,4 @@
-package com.puzzlebench.yelp_aac.presentation.model
+package com.puzzlebench.yelp_aac.repository.model
 
 data class Business(
     val businessId: String,
