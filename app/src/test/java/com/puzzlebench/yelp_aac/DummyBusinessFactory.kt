@@ -1,7 +1,7 @@
 package com.puzzlebench.yelp_aac
 
-import com.puzzlebench.yelp_aac.data.remote.retofit.BusinessResponse
-import com.puzzlebench.yelp_aac.data.remote.retofit.YelpResponse
+import com.puzzlebench.yelp_aac.data.remote.retrofit.BusinessResponse
+import com.puzzlebench.yelp_aac.data.remote.retrofit.YelpResponse
 
 object DummyBusinessFactory {
     const val BUSINESS_ID = "BUSINESS_ID"

@@ -1,4 +1,4 @@
-package com.puzzlebench.yelp_aac.data.remote.retofit
+package com.puzzlebench.yelp_aac.data.remote.retrofit
 
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.puzzlebench.yelp_aac.BuildConfig
