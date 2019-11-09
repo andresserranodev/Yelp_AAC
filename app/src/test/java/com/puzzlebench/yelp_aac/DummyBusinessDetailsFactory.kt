@@ -18,12 +18,6 @@ object DummyBusinessDetailsFactory {
         getDummyListPhotoResponse()
     )
 
-    fun getDummyBusinessDetails(seed: String) = BusinessDetails(
-        "${BUSINESS_ID}$seed",
-        listOf(seed, seed),
-        listOf()
-    )
-
     fun getDummyListCategoriesEntity(): List<CategoriesEntity> = (1..20).map {
         getDummyCategoriesEntity(it.toString())
     }

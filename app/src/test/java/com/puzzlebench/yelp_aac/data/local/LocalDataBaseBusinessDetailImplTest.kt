@@ -3,10 +3,8 @@ package com.puzzlebench.yelp_aac.data.local
 import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.verify
-import com.puzzlebench.yelp_aac.DummyBusinessDetailsFactory.getDummyBusinessDetails
 import com.puzzlebench.yelp_aac.DummyBusinessDetailsFactory.getDummyListCategoriesEntity
 import com.puzzlebench.yelp_aac.DummyBusinessDetailsFactory.getDummyListPhotosEntity
-import com.puzzlebench.yelp_aac.data.local.room.dao.BusinessDao
 import com.puzzlebench.yelp_aac.data.local.room.dao.CategoriesDao
 import com.puzzlebench.yelp_aac.data.local.room.dao.PhotoDao
 import com.puzzlebench.yelp_aac.data.mapper.BusinessDetailMapper
