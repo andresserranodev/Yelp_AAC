@@ -6,13 +6,16 @@ apply plugin: 'kotlin-android-extensions'
 
 apply plugin: 'kotlin-kapt'
 
+apply plugin: "androidx.navigation.safeargs"
+
+
 android {
-    compileSdkVersion 29
+    compileSdkVersion 28
     buildToolsVersion "29.0.2"
     defaultConfig {
         applicationId "com.puzzlebench.yelp_aac"
-        minSdkVersion 15
-        targetSdkVersion 29
+        minSdkVersion 23
+        targetSdkVersion 28
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -29,8 +32,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-    packagingOptions {
-        exclude 'META-INF/DEPENDENCIES'
+    dataBinding {
+        enabled = true
+    }
+    kotlinOptions {
+        jvmTarget = "1.8"
     }
 }
 
@@ -46,6 +52,9 @@ dependencies {
 
     def generalDependencies = rootProject.ext.generalDependencies
     implementation generalDependencies.coreKtx
+    // navigation
+    implementation presentationDependencies.navigationFragmentKtx
+    implementation presentationDependencies.navigationUiKtx
     //Coroutines
     api generalDependencies.coroutinesCore
     api generalDependencies.coroutinesAndroid
@@ -56,6 +65,10 @@ dependencies {
     implementation dataDependencies.retrofit
     implementation dataDependencies.retrofitConverter
     implementation dataDependencies.retrofitCoroutinesAdapter
+    //Room
+    kapt "androidx.room:room-compiler:$rootProject.roomVersion"
+    implementation dataDependencies.roomRuntime
+    implementation dataDependencies.runtimeKtx
 
     def generalTestDependencies = rootProject.ext.generalTestDependencies
     testImplementation generalTestDependencies.mockito,
