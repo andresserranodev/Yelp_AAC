@@ -5,14 +5,13 @@ import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.verify
 import com.puzzlebench.yelp_aac.DummyBusinessFactory.getDummyYepResponse
 import com.puzzlebench.yelp_aac.data.mapper.BusinessMapper
-import com.puzzlebench.yelp_aac.data.remote.retofit.YelpApiV3
+import com.puzzlebench.yelp_aac.data.remote.retrofit.YelpApiV3
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
 
-import org.junit.Assert.*
 import org.junit.Test
 
-class RemoteFetchSwitzerlandBusinessesImlTest {
+class RemoteFetchSwitzerlandBusinessesImplTest {
     private lateinit var remoteFetchSwitzerlandBusinesses: RemoteFetchSwitzerlandBusinesses
 
     private val serviceResponse = getDummyYepResponse()
@@ -25,7 +24,7 @@ class RemoteFetchSwitzerlandBusinessesImlTest {
     @Before
     fun setUp() {
         remoteFetchSwitzerlandBusinesses =
-            RemoteFetchSwitzerlandBusinessesIml(service, businessMapper)
+            RemoteFetchSwitzerlandBusinessesImpl(service, businessMapper)
     }
 
 

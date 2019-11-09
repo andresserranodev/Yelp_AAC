@@ -2,12 +2,12 @@ package com.puzzlebench.yelp_aac.data.remote
 
 import com.puzzlebench.yelp_aac.presentation.BussinesState
 import com.puzzlebench.yelp_aac.data.mapper.BusinessMapper
-import com.puzzlebench.yelp_aac.data.remote.retofit.YelpApiV3
+import com.puzzlebench.yelp_aac.data.remote.retrofit.YelpApiV3
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.lang.Exception
 
-class RemoteFetchSwitzerlandBusinessesIml constructor(
+class RemoteFetchSwitzerlandBusinessesImpl constructor(
     private val api: YelpApiV3,
     private val mapper: BusinessMapper
 ) : RemoteFetchSwitzerlandBusinesses {

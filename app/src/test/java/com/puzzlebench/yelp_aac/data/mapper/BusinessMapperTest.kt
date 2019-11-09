@@ -2,7 +2,7 @@ package com.puzzlebench.yelp_aac.data.mapper
 
 import com.puzzlebench.yelp_aac.DummyBusinessFactory.getDummyBusinessResponse
 import com.puzzlebench.yelp_aac.DummyBusinessFactory.getDummyBusinessResponseNullPrice
-import com.puzzlebench.yelp_aac.data.remote.retofit.BusinessResponse
+import com.puzzlebench.yelp_aac.data.remote.retrofit.BusinessResponse
 import com.puzzlebench.yelp_aac.presentation.Business
 import org.junit.Before
 
