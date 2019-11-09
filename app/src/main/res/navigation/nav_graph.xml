@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.puzzlebench.yelp_aac.presentation.fragment.ListBusinessFragment"
+        android:name="com.puzzlebench.yelp_aac.presentation.fragment.ListBusinessesFragment"
         android:label="MainFragment">
         <action
             android:id="@+id/action_mainFragment_to_detailsBusinessFragment"

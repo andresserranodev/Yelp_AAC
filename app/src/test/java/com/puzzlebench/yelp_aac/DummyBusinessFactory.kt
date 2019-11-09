@@ -3,8 +3,8 @@ package com.puzzlebench.yelp_aac
 import com.puzzlebench.yelp_aac.data.local.room.entity.BusinessEntity
 import com.puzzlebench.yelp_aac.data.remote.retrofit.BusinessResponse
 import com.puzzlebench.yelp_aac.data.remote.retrofit.YelpResponse
-import com.puzzlebench.yelp_aac.repository.model.Business
-import com.puzzlebench.yelp_aac.repository.model.BussinesState
+import com.puzzlebench.yelp_aac.presentation.model.Business
+import com.puzzlebench.yelp_aac.repository.model.BusinessState
 
 object DummyBusinessFactory {
     const val BUSINESS_ID = "BUSINESS_ID"
@@ -57,12 +57,12 @@ object DummyBusinessFactory {
         "$PRICE$seed"
     )
 
-    fun getBussinesStateError() = BussinesState(listOf(), "Error")
+    fun getBussinesStateError() = BusinessState(listOf(), "Error")
 
-    fun getBussinesStateEmpty() = BussinesState(listOf())
+    fun getBussinesStateEmpty() = BusinessState(listOf())
 
 
-    fun getBussinesStateNoError() = BussinesState(getDummyListBusiness())
+    fun getBussinesStateNoError() = BusinessState(getDummyListBusiness())
 
     private fun getDummyListBusinessResponse(): List<BusinessResponse> = (1..20).map {
         getDummyBusinessResponse(it.toString())

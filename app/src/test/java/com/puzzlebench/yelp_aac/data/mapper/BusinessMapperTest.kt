@@ -6,7 +6,7 @@ import com.puzzlebench.yelp_aac.DummyBusinessFactory.getDummyBusinessResponse
 import com.puzzlebench.yelp_aac.DummyBusinessFactory.getDummyBusinessResponseNullPrice
 import com.puzzlebench.yelp_aac.data.local.room.entity.BusinessEntity
 import com.puzzlebench.yelp_aac.data.remote.retrofit.BusinessResponse
-import com.puzzlebench.yelp_aac.repository.model.Business
+import com.puzzlebench.yelp_aac.presentation.model.Business
 import org.junit.Before
 
 import org.junit.Assert.*
