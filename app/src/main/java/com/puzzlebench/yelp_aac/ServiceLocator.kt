@@ -46,6 +46,7 @@ object ServiceLocator {
             ?: createDataBase(context)
         return LocalDataBaseBusinessDetailImpl(
             database.categoriesDao(),
+            database.photoDao(),
             provideBusinessDetailMapper()
         )
     }

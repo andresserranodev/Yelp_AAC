@@ -1,6 +1,7 @@
 package com.puzzlebench.yelp_aac.data.mapper
 
 import com.puzzlebench.yelp_aac.data.local.room.entity.CategoriesEntity
+import com.puzzlebench.yelp_aac.data.local.room.entity.PhotoEntity
 import com.puzzlebench.yelp_aac.data.remote.retrofit.BusinessDetailResponse
 import com.puzzlebench.yelp_aac.data.remote.retrofit.CategoriesResponse
 import com.puzzlebench.yelp_aac.presentation.model.BusinessDetails
@@ -17,14 +18,20 @@ class BusinessDetailMapper {
     fun transformRepositoryToCategoriesEntity(businessId: String, title: String) =
         CategoriesEntity(0, businessId, title)
 
+    fun transformPhotoRepositoryToEntity(businessId: String, url: String) =
+        PhotoEntity(0, businessId, url)
+
     private fun getCategories(categoriesResponse: List<CategoriesResponse>): List<String> =
         categoriesResponse.map { it.title }
 
-    fun transformEntityToRepository(categoriesEntity: List<CategoriesEntity>) =
+    fun transformEntityToRepository(
+        categoriesEntity: List<CategoriesEntity>,
+        photoEntity: List<PhotoEntity>
+    ) =
         BusinessDetails(
             categoriesEntity.first().businessId,
             categoriesEntity.map { it.title },
-            listOf()
+            photoEntity.map { it.photoUrl }
         )
 
 
