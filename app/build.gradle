@@ -4,6 +4,8 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+apply plugin: 'kotlin-kapt'
+
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
@@ -49,13 +51,19 @@ dependencies {
     api generalDependencies.coroutinesAndroid
 
     def dataDependencies = rootProject.ext.dataDependencies
+    implementation dataDependencies.roomKtx
     //Retrofit2
     implementation dataDependencies.retrofit
     implementation dataDependencies.retrofitConverter
     implementation dataDependencies.retrofitCoroutinesAdapter
 
+    def generalTestDependencies = rootProject.ext.generalTestDependencies
+    testImplementation generalTestDependencies.mockito,
+            generalTestDependencies.junit,
+            generalTestDependencies.mockitoInline,
+            generalTestDependencies.kotlinTest,
+            generalTestDependencies.mockitoKotlin
 
-    testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
