@@ -4,6 +4,8 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+apply plugin: 'kotlin-kapt'
+
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
@@ -16,20 +18,54 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
+        debug {
+            buildConfigField "String", "API_KEY_VALUE", '"your-private-apikey"'
+            buildConfigField "String", "YELP_BASE_URL", '"https://api.yelp.com/"'
+        }
         release {
             minifyEnabled false
+            buildConfigField "String", "API_KEY_VALUE", '"your-private-apikey"'
+            buildConfigField "String", "YELP_BASE_URL", '"https://api.yelp.com/"'
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+    }
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
     }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'androidx.core:core-ktx:1.1.0'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-    testImplementation 'junit:junit:4.12'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    def presentationDependencies = rootProject.ext.presentationDependencies
+    implementation presentationDependencies.appcompat
+    implementation presentationDependencies.constraintlayout
+    implementation presentationDependencies.lifecycleExtension
+    implementation presentationDependencies.livedataKtx
+    implementation presentationDependencies.viewmodelKtx
+
+    def generalDependencies = rootProject.ext.generalDependencies
+    implementation generalDependencies.coreKtx
+    //Coroutines
+    api generalDependencies.coroutinesCore
+    api generalDependencies.coroutinesAndroid
+
+    def dataDependencies = rootProject.ext.dataDependencies
+    implementation dataDependencies.roomKtx
+    //Retrofit2
+    implementation dataDependencies.retrofit
+    implementation dataDependencies.retrofitConverter
+    implementation dataDependencies.retrofitCoroutinesAdapter
+
+    def generalTestDependencies = rootProject.ext.generalTestDependencies
+    testImplementation generalTestDependencies.mockito,
+            generalTestDependencies.junit,
+            generalTestDependencies.mockitoInline,
+            generalTestDependencies.kotlinTest,
+            generalTestDependencies.mockitoKotlin
+
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+
 }
