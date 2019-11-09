@@ -35,7 +35,6 @@ class ListBusinessFragment : Fragment() {
             action.businessId = businessId
             Navigation.findNavController(view).navigate(action)
         }
-
     }
 
     override fun onCreateView(
