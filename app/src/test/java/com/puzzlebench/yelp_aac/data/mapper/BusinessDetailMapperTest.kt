@@ -2,7 +2,7 @@ package com.puzzlebench.yelp_aac.data.mapper
 
 import com.puzzlebench.yelp_aac.DummyBusinessDetailsFactory.getDummyBusinessDetailResponse
 import com.puzzlebench.yelp_aac.data.remote.retrofit.BusinessDetailResponse
-import com.puzzlebench.yelp_aac.presentation.BusinessDetails
+import com.puzzlebench.yelp_aac.presentation.model.BusinessDetails
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
