@@ -2,7 +2,7 @@ package com.puzzlebench.yelp_aac.data.remote
 
 import com.puzzlebench.yelp_aac.data.mapper.BusinessDetailMapper
 import com.puzzlebench.yelp_aac.data.remote.retrofit.YelpApiV3
-import com.puzzlebench.yelp_aac.presentation.BusinessDetailsState
+import com.puzzlebench.yelp_aac.presentation.model.BusinessDetailsState
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 

@@ -1,7 +1,9 @@
 package com.puzzlebench.yelp_aac
 
+import com.puzzlebench.yelp_aac.data.local.room.entity.BusinessEntity
 import com.puzzlebench.yelp_aac.data.remote.retrofit.BusinessResponse
 import com.puzzlebench.yelp_aac.data.remote.retrofit.YelpResponse
+import com.puzzlebench.yelp_aac.presentation.model.Business
 
 object DummyBusinessFactory {
     const val BUSINESS_ID = "BUSINESS_ID"
@@ -11,10 +13,6 @@ object DummyBusinessFactory {
     const val PRICE = "$$$"
 
     fun getDummyYepResponse() = YelpResponse(getDummyListBusinessResponse())
-
-    private fun getDummyListBusinessResponse(): List<BusinessResponse> = (1..20).map {
-        getDummyBusinessResponse(it.toString())
-    }
 
     fun getDummyBusinessResponse(seed: String) = BusinessResponse(
         "$BUSINESS_ID$seed",
@@ -31,5 +29,35 @@ object DummyBusinessFactory {
         "$DISPLAY_PHONE$seed",
         null
     )
+
+    fun getDummyBusinessEntity(seed: String) =
+        BusinessEntity(
+            "$BUSINESS_ID$seed",
+            "$BASE_NAME$seed",
+            "$IMAGE_URL$seed",
+            "$DISPLAY_PHONE$seed",
+            "$PRICE$seed"
+        )
+
+
+    fun getDummyListBusinessEntity(): List<BusinessEntity> = (1..20).map {
+        getDummyBusinessEntity(it.toString())
+    }
+
+    fun getDummyListBusiness(): List<Business> = (1..20).map {
+        getDummyBusiness(it.toString())
+    }
+
+    fun getDummyBusiness(seed: String) = Business(
+        "$BUSINESS_ID$seed",
+        "$BASE_NAME$seed",
+        "$IMAGE_URL$seed",
+        "$DISPLAY_PHONE$seed",
+        "$PRICE$seed"
+    )
+
+    private fun getDummyListBusinessResponse(): List<BusinessResponse> = (1..20).map {
+        getDummyBusinessResponse(it.toString())
+    }
 
 }

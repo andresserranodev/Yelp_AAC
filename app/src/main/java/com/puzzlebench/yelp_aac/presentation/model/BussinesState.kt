@@ -1,4 +1,4 @@
-package com.puzzlebench.yelp_aac.presentation
+package com.puzzlebench.yelp_aac.presentation.model
 
 const val NO_ERROR = ""
 
