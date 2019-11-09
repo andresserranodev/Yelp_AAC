@@ -31,7 +31,7 @@ class LocalDataBaseBusinessDetailImpl constructor(
     override suspend fun insertBusinessDetails(business: BusinessDetails) {
         business.categories.map {
             categoriesDao.insertCategories(
-                mapper.transformRepositoryToEntity(
+                mapper.transformRepositoryToCategoriesEntity(
                     business.businessId,
                     it
                 )

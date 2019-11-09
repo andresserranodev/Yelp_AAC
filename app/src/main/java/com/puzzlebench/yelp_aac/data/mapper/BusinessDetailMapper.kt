@@ -14,8 +14,7 @@ class BusinessDetailMapper {
             service.photos
         )
 
-    //TODO fix name
-    fun transformRepositoryToEntity(businessId: String, title: String) =
+    fun transformRepositoryToCategoriesEntity(businessId: String, title: String) =
         CategoriesEntity(0, businessId, title)
 
     private fun getCategories(categoriesResponse: List<CategoriesResponse>): List<String> =

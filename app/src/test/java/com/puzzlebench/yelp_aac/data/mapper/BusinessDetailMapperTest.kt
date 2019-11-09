@@ -1,8 +1,10 @@
 package com.puzzlebench.yelp_aac.data.mapper
 
 import com.puzzlebench.yelp_aac.DummyBusinessDetailsFactory.getDummyBusinessDetailResponse
+import com.puzzlebench.yelp_aac.DummyBusinessDetailsFactory.getDummyListCategoriesEntity
 import com.puzzlebench.yelp_aac.data.remote.retrofit.BusinessDetailResponse
 import com.puzzlebench.yelp_aac.presentation.model.BusinessDetails
+import junit.framework.Assert
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
@@ -14,6 +16,15 @@ class BusinessDetailMapperTest {
     @Before
     fun setUp() {
         mapper = BusinessDetailMapper()
+    }
+
+    @Test
+    fun transformEntityToRepository() {
+        val categoriesEntity = getDummyListCategoriesEntity()
+        val result = mapper.transformEntityToRepository(categoriesEntity)
+        result.categories.forEachIndexed { index, s ->
+            assertEquals(categoriesEntity[index].title, s)
+        }
     }
 
     @Test
