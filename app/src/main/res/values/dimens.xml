@@ -1,0 +1,11 @@
+<resources>
+
+    <dimen name="cardview_margin">15dp</dimen>
+    <dimen name="imageview_business_margin">150dp</dimen>
+    <dimen name="imageview_business_description_margin">200dp</dimen>
+    <dimen name="item_business_card_coner_radius">5dp</dimen>
+    <dimen name="cardview_margin_botton">2dp</dimen>
+    <dimen name="card_elevation">2dp</dimen>
+    <dimen name="item_bussines_image_width">100dp</dimen>
+    <dimen name="item_bussines_image_heigth">100dp</dimen>
+</resources>

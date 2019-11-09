@@ -49,6 +49,9 @@ dependencies {
     implementation presentationDependencies.lifecycleExtension
     implementation presentationDependencies.livedataKtx
     implementation presentationDependencies.viewmodelKtx
+    implementation presentationDependencies.glide
+    api "org.jetbrains.anko:anko-commons:0.10.1"
+
 
     def generalDependencies = rootProject.ext.generalDependencies
     implementation generalDependencies.coreKtx
@@ -79,6 +82,5 @@ dependencies {
 
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-
 
 }

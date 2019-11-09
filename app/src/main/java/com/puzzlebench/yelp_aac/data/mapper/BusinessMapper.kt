@@ -1,7 +1,7 @@
 package com.puzzlebench.yelp_aac.data.mapper
 
 import com.puzzlebench.yelp_aac.data.local.room.entity.BusinessEntity
-import com.puzzlebench.yelp_aac.repository.model.Business
+import com.puzzlebench.yelp_aac.presentation.model.Business
 import com.puzzlebench.yelp_aac.data.remote.retrofit.BusinessResponse
 
 class BusinessMapper : BaseMapperData<BusinessResponse, Business, BusinessEntity> {
