@@ -15,7 +15,6 @@ interface BusinessDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertBusiness(business: BusinessEntity)
 
-
     @Query("DELETE FROM BUSINESS_TABLE")
     suspend fun deleteAllBusiness()
 }

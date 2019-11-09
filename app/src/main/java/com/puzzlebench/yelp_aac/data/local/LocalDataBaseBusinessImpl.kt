@@ -2,6 +2,7 @@ package com.puzzlebench.yelp_aac.data.local
 
 import com.puzzlebench.yelp_aac.data.local.room.dao.BusinessDao
 import com.puzzlebench.yelp_aac.data.mapper.BusinessMapper
+import com.puzzlebench.yelp_aac.data.mapper.UNDEFINED_ERROR_LOCAL_DATA_BASE_BUSINESS
 import com.puzzlebench.yelp_aac.presentation.model.Business
 import com.puzzlebench.yelp_aac.presentation.model.BussinesState
 import kotlinx.coroutines.CoroutineDispatcher
@@ -22,7 +23,7 @@ class LocalDataBaseBusinessImpl internal constructor(
                 )
             })
         } catch (e: Exception) {
-            BussinesState(listOf(), e.message ?: "")
+            BussinesState(listOf(), e.message ?: UNDEFINED_ERROR_LOCAL_DATA_BASE_BUSINESS)
         }
 
     }

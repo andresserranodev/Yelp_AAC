@@ -4,5 +4,4 @@ import com.puzzlebench.yelp_aac.presentation.model.BussinesState
 
 interface RemoteFetchSwitzerlandBusinesses {
     suspend fun fetchSwitzerlandBusiness(): BussinesState
-
 }

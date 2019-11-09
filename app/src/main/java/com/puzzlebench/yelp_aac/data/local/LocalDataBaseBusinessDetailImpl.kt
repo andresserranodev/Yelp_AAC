@@ -3,6 +3,7 @@ package com.puzzlebench.yelp_aac.data.local
 import com.puzzlebench.yelp_aac.data.local.room.dao.CategoriesDao
 import com.puzzlebench.yelp_aac.data.local.room.dao.PhotoDao
 import com.puzzlebench.yelp_aac.data.mapper.BusinessDetailMapper
+import com.puzzlebench.yelp_aac.data.mapper.UNDEFINED_ERROR_LOCAL_DATA_BASE_BUSINESS_DETAILS
 import com.puzzlebench.yelp_aac.presentation.model.BusinessDetails
 import com.puzzlebench.yelp_aac.presentation.model.BusinessDetailsState
 import kotlinx.coroutines.CoroutineDispatcher
@@ -24,11 +25,11 @@ class LocalDataBaseBusinessDetailImpl constructor(
                     mapper.transformEntityToRepository(
                         resultCategory,
                         resultPhoto
-                    ), ""
+                    )
                 )
 
             } catch (e: Exception) {
-                BusinessDetailsState(null, e.message ?: "")
+                BusinessDetailsState(null, e.message ?: UNDEFINED_ERROR_LOCAL_DATA_BASE_BUSINESS_DETAILS)
             }
         }
 
