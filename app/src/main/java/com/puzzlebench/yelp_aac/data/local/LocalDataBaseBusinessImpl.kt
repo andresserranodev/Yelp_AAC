@@ -3,8 +3,8 @@ package com.puzzlebench.yelp_aac.data.local
 import com.puzzlebench.yelp_aac.data.local.room.dao.BusinessDao
 import com.puzzlebench.yelp_aac.data.mapper.BusinessMapper
 import com.puzzlebench.yelp_aac.data.mapper.UNDEFINED_ERROR_LOCAL_DATA_BASE_BUSINESS
-import com.puzzlebench.yelp_aac.presentation.model.Business
-import com.puzzlebench.yelp_aac.presentation.model.BussinesState
+import com.puzzlebench.yelp_aac.repository.model.Business
+import com.puzzlebench.yelp_aac.repository.model.BussinesState
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext

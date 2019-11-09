@@ -1,15 +1,10 @@
 package com.puzzlebench.yelp_aac.presentation
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.puzzlebench.yelp_aac.R
-import com.puzzlebench.yelp_aac.ServiceLocator
-import com.puzzlebench.yelp_aac.data.local.LocalDataBaseBusiness
-import com.puzzlebench.yelp_aac.data.local.LocalDataBaseBusinessDetail
-import com.puzzlebench.yelp_aac.data.remote.RemoteFetchBusinessDetailsById
-import com.puzzlebench.yelp_aac.data.remote.RemoteFetchSwitzerlandBusinesses
-import com.puzzlebench.yelp_aac.presentation.model.BusinessDetailsState
-import com.puzzlebench.yelp_aac.presentation.model.BussinesState
+import com.puzzlebench.yelp_aac.repository.BusinessDetailsRepository
+import com.puzzlebench.yelp_aac.repository.BusinessRepository
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -22,32 +17,18 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
     override val coroutineContext: CoroutineContext
         get() = mJob + Dispatchers.Main
 
-    private lateinit var remoteFetchSwitzerlandBusinesses: RemoteFetchSwitzerlandBusinesses
-    private lateinit var remoteFetchBusinessDetailsById: RemoteFetchBusinessDetailsById
-    private lateinit var localDataBaseBusiness: LocalDataBaseBusiness
-    private lateinit var localDataBaseBusinessDetail: LocalDataBaseBusinessDetail
+    private lateinit var businessRepository: BusinessRepository
+    private lateinit var businessDetailsRepository: BusinessDetailsRepository
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         mJob = Job()
-        remoteFetchSwitzerlandBusinesses = ServiceLocator.provideRemoteFetchSwitzerlandBusinesses()
-        remoteFetchBusinessDetailsById = ServiceLocator.provideRemoteFetchBusinessDetailsByIdImpl()
-        localDataBaseBusiness = ServiceLocator.provideBusinessLocalDataSource(this.baseContext)
-        localDataBaseBusinessDetail =
-            ServiceLocator.provideLocalDataBaseBusinessDetail(this.baseContext)
+        businessRepository = (this.applicationContext as YelpApplication).businessRepository
+        businessDetailsRepository =
+            (this.applicationContext as YelpApplication).businessDetailsRepository
         launch {
-            val businessState: BussinesState
-            val localData = localDataBaseBusiness.getBusiness()
-            businessState = if (localData.businesses.isEmpty()) {
-                val response = remoteFetchSwitzerlandBusinesses.fetchSwitzerlandBusiness()
-                response.businesses.map {
-                    localDataBaseBusiness.saveBusiness(it)
-                }
-                response
-            } else {
-                localData
-            }
+            val businessState = businessRepository.getBusiness()
             if (businessState.error.isEmpty()) {
                 textView.text = businessState.businesses[0].businessId
             } else {
@@ -55,21 +36,8 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
             }
         }
         launch {
-
             val businessId = "KeNGoOn5jsAtsq-AXyDWzQ"
-            val businessDetailsState: BusinessDetailsState
-            val localData =
-                localDataBaseBusinessDetail.getBusinessDetailsByBusinessId(businessId)
-            businessDetailsState = if (localData.businessDetails == null) {
-                val remoteData =
-                    remoteFetchBusinessDetailsById.fetchBusinessDetailsById(businessId)
-                remoteData.businessDetails?.let {
-                    localDataBaseBusinessDetail.insertBusinessDetails(it)
-                }
-                remoteData
-            } else {
-                localData
-            }
+            val businessDetailsState = businessDetailsRepository.getBusinessDetailsById(businessId)
             if (businessDetailsState.error.isEmpty()) {
                 textView_details_category.text =
                     businessDetailsState.businessDetails?.categories.toString()
@@ -78,9 +46,6 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
             } else {
                 textView_details_category.text = businessDetailsState.error
             }
-
         }
-
-
     }
 }
