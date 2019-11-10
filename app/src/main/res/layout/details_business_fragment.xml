@@ -43,7 +43,8 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/background" />
+                    app:srcCompat="@drawable/background"
+                    android:contentDescription="@string/business_image" />
 
                 <TextView
                     android:id="@+id/tv_name_business"
@@ -53,7 +54,7 @@
                     android:textColor="@android:color/white"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    tools:text="TextView 1 TextView2" />
+                    tools:text="4.1" />
             </androidx.constraintlayout.motion.widget.MotionLayout>
 
         </com.google.android.material.appbar.AppBarLayout>
@@ -96,15 +97,19 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_business_name" />
 
-                <TextView
-                    android:id="@+id/tv_categories"
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_categories"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="30dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_title_categories"
-                    tools:text="TextView 1 TextView2" />
+                    app:spanCount="@integer/spanCount_all_post_list"
+                    tools:listitem="@layout/item_categories" />
 
                 <TextView
                     android:id="@+id/tv_location"
@@ -116,7 +121,7 @@
                     android:textSize="18sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_categories" />
+                    app:layout_constraintTop_toBottomOf="@+id/rv_categories" />
 
                 <TextView
                     android:id="@+id/tv_business_address"

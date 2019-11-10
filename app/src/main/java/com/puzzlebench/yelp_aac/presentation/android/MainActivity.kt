@@ -1,4 +1,4 @@
-package com.puzzlebench.yelp_aac.presentation
+package com.puzzlebench.yelp_aac.presentation.android
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
