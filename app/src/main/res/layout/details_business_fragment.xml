@@ -49,7 +49,7 @@
                     android:id="@+id/tv_name_business"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="5.0"
+                    android:text="@{String.valueOf(viewModel.business.rating)}"
                     android:textColor="@android:color/white"
                     android:textSize="18sp"
                     android:textStyle="bold"
@@ -124,7 +124,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="30dp"
                     android:layout_marginTop="10dp"
-                    android:text="@{@string/business_details_address(viewModel.business.displayPhone)}"
+                    android:text="@{@string/business_details_address(viewModel.business.displayAddress)}"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_location"
                     tools:text="Address: Sihistrasse 28" />

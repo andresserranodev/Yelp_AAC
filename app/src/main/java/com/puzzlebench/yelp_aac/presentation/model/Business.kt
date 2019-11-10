@@ -5,5 +5,8 @@ data class Business(
     val name: String,
     val imageUrl: String,
     val displayPhone: String,
+    val displayAddress: String,
+    val isClosed: Boolean,
+    val rating: Float,
     val price: String
 )

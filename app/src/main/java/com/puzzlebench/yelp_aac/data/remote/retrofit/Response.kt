@@ -7,6 +7,9 @@ class BusinessResponse(
     val name: String,
     @SerializedName("image_url") val imageUrl: String,
     @SerializedName("display_phone") val displayPhone: String,
+    @SerializedName("is_closed") val isClosed: Boolean,
+    val location: Location,
+    val rating: Float,
     val price: String?
 )
 
@@ -20,4 +23,8 @@ class BusinessDetailResponse(
 
 class CategoriesResponse(
     val title: String
+)
+
+class Location(
+    val address1: String
 )
