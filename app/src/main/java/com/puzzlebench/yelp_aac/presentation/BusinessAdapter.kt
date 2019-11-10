@@ -68,12 +68,3 @@ private class BusinessDiffCallback : DiffUtil.ItemCallback<Business>() {
     }
 }
 
-@BindingAdapter("imageFromUrl")
-fun bindImageFromUrl(view: ImageView, imageUrl: String?) {
-    if (!imageUrl.isNullOrEmpty()) {
-        Glide.with(view.context)
-            .load(imageUrl)
-            .transition(DrawableTransitionOptions.withCrossFade())
-            .into(view)
-    }
-}

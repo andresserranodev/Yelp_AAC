@@ -2,6 +2,7 @@ package com.puzzlebench.yelp_aac
 
 import com.puzzlebench.yelp_aac.data.local.room.entity.BusinessEntity
 import com.puzzlebench.yelp_aac.data.remote.retrofit.BusinessResponse
+import com.puzzlebench.yelp_aac.data.remote.retrofit.Location
 import com.puzzlebench.yelp_aac.data.remote.retrofit.YelpResponse
 import com.puzzlebench.yelp_aac.presentation.model.Business
 import com.puzzlebench.yelp_aac.repository.model.BusinessState
@@ -11,6 +12,7 @@ object DummyBusinessFactory {
     const val BASE_NAME = "Dummy Name "
     const val IMAGE_URL = "http:www.dummy.com"
     const val DISPLAY_PHONE = "(121)-3123132"
+    const val DISPLAY_ADDRESS = "dasdadsada"
     const val PRICE = "$$$"
 
     fun getDummyYepResponse() = YelpResponse(getDummyListBusinessResponse())
@@ -20,7 +22,10 @@ object DummyBusinessFactory {
         "$BASE_NAME$seed",
         "$IMAGE_URL$seed",
         "$DISPLAY_PHONE$seed",
-        "$PRICE$seed"
+        true,
+        Location(DISPLAY_ADDRESS),
+        4.5F,
+        PRICE
     )
 
     fun getDummyBusinessResponseNullPrice(seed: String) = BusinessResponse(
@@ -28,6 +33,9 @@ object DummyBusinessFactory {
         "$BASE_NAME$seed",
         "$IMAGE_URL$seed",
         "$DISPLAY_PHONE$seed",
+        true,
+        Location(DISPLAY_ADDRESS),
+        4.5F,
         null
     )
 
@@ -37,6 +45,9 @@ object DummyBusinessFactory {
             "$BASE_NAME$seed",
             "$IMAGE_URL$seed",
             "$DISPLAY_PHONE$seed",
+            "$DISPLAY_ADDRESS$seed",
+            true,
+            4.5F,
             "$PRICE$seed"
         )
 
@@ -54,6 +65,9 @@ object DummyBusinessFactory {
         "$BASE_NAME$seed",
         "$IMAGE_URL$seed",
         "$DISPLAY_PHONE$seed",
+        "$DISPLAY_ADDRESS$seed",
+        true,
+        4.5F,
         "$PRICE$seed"
     )
 

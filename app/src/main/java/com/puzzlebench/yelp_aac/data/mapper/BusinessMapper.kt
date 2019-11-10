@@ -12,6 +12,9 @@ class BusinessMapper : BaseMapperData<BusinessResponse, Business, BusinessEntity
             repository.name,
             repository.imageUrl,
             repository.displayPhone,
+            repository.displayAddress,
+            repository.isClosed,
+            repository.rating,
             repository.price
         )
 
@@ -21,6 +24,9 @@ class BusinessMapper : BaseMapperData<BusinessResponse, Business, BusinessEntity
             entity.name,
             entity.imageUrl,
             entity.displayPhone,
+            entity.displayAddress,
+            entity.isClosed,
+            entity.rating,
             entity.price
         )
 
@@ -30,6 +36,9 @@ class BusinessMapper : BaseMapperData<BusinessResponse, Business, BusinessEntity
             service.name,
             service.imageUrl,
             service.displayPhone,
+            service.location.address1,
+            service.isClosed,
+            service.rating,
             getPrice(service.price)
         )
 

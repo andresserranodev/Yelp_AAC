@@ -75,9 +75,11 @@ object ServiceLocator {
         val database = database
             ?: createDataBase(context)
         return LocalDataBaseBusinessDetailImpl(
+            database.businessDao(),
             database.categoriesDao(),
             database.photoDao(),
-            provideBusinessDetailMapper()
+            provideBusinessDetailMapper(),
+            provideBusinessMapper()
         )
     }
 

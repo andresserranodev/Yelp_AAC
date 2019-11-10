@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">Yelp_AAC</string>
     <string name="loading">Loading ..</string>
+    <string name="categories">Categories:</string>
+    <string name="location">Location:</string>
+    <string name="business_details_phone">Phone: %s </string>
+    <string name="business_details_address">Address: %s </string>
+    <string name="business_details_price">Price: %s </string>
 </resources>

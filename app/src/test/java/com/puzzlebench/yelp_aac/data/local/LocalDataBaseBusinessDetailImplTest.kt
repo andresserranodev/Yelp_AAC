@@ -5,11 +5,14 @@ import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.verify
 import com.puzzlebench.yelp_aac.DummyBusinessDetailsFactory.getDummyListCategoriesEntity
 import com.puzzlebench.yelp_aac.DummyBusinessDetailsFactory.getDummyListPhotosEntity
+import com.puzzlebench.yelp_aac.data.local.room.dao.BusinessDao
 import com.puzzlebench.yelp_aac.data.local.room.dao.CategoriesDao
 import com.puzzlebench.yelp_aac.data.local.room.dao.PhotoDao
 import com.puzzlebench.yelp_aac.data.mapper.BusinessDetailMapper
+import com.puzzlebench.yelp_aac.data.mapper.BusinessMapper
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
+import org.junit.Ignore
 import org.junit.Test
 
 class LocalDataBaseBusinessDetailImplTest {
@@ -27,13 +30,21 @@ class LocalDataBaseBusinessDetailImplTest {
         onBlocking { getPhotosByBusinessId(businessId) } doReturn localDataPhotosEntity
     }
 
-
+    private val businessDao = mock<BusinessDao>()
     private val mapper = mock<BusinessDetailMapper>()
+    private val businessMapper = mock<BusinessMapper>()
+
 
     @Before
     fun setUp() {
         localDataBaseBusinessDetail =
-            LocalDataBaseBusinessDetailImpl(categoriesDao, photoDao, mapper)
+            LocalDataBaseBusinessDetailImpl(
+                businessDao,
+                categoriesDao,
+                photoDao,
+                mapper,
+                businessMapper
+            )
     }
 
     @Test

@@ -50,11 +50,11 @@ dependencies {
     implementation presentationDependencies.livedataKtx
     implementation presentationDependencies.viewmodelKtx
     implementation presentationDependencies.glide
-    api "org.jetbrains.anko:anko-commons:0.10.1"
-
+    implementation presentationDependencies.androidMaterial
 
     def generalDependencies = rootProject.ext.generalDependencies
     implementation generalDependencies.coreKtx
+    api generalDependencies.anko
     // navigation
     implementation presentationDependencies.navigationFragmentKtx
     implementation presentationDependencies.navigationUiKtx
