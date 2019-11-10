@@ -6,7 +6,7 @@
     <data>
 
         <variable
-            name="Categories"
+            name="categories"
             type="String" />
     </data>
 
@@ -22,7 +22,7 @@
             android:layout_margin="@dimen/categories_tv_margin"
             android:background="@drawable/categories_item"
             android:padding="@dimen/categories_tv_padding"
-            android:text="@{Categories}"
+            android:text="@{categories}"
             android:textColor="@android:color/white"
             tools:text="Category Name" />
     </FrameLayout>
