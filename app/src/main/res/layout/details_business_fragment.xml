@@ -6,6 +6,8 @@
 
     <data>
 
+        <import type="android.view.View" />
+
         <variable
             name="business"
             type="com.puzzlebench.yelp_aac.presentation.model.BusinessDetails" />
@@ -31,29 +33,32 @@
                 android:minHeight="80dp"
                 android:scaleType="centerCrop"
                 app:layoutDescription="@xml/step8"
-                app:layout_scrollFlags="scroll|enterAlways|snap|exitUntilCollapsed"
-                app:motionDebug="SHOW_PATH">
+                app:layout_scrollFlags="scroll|enterAlways|snap|exitUntilCollapsed">
 
                 <ImageView
                     android:id="@+id/business_image"
                     android:layout_width="0dp"
                     android:layout_height="1000dp"
+                    android:contentDescription="@string/business_image"
                     app:imageFromUrl="@{viewModel.business.imageUrl}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/background"
-                    android:contentDescription="@string/business_image" />
+                    app:srcCompat="@drawable/background" />
 
                 <TextView
                     android:id="@+id/tv_name_business"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:background="@drawable/rating_item"
+                    android:padding="@dimen/rating_details_padding"
                     android:text="@{String.valueOf(viewModel.business.rating)}"
                     android:textColor="@android:color/white"
-                    android:textSize="18sp"
+                    android:textSize="17sp"
                     android:textStyle="bold"
+                    tools:layout_editor_absoluteX="20dp"
+                    tools:layout_editor_absoluteY="140dp"
                     tools:text="4.1" />
             </androidx.constraintlayout.motion.widget.MotionLayout>
 
@@ -73,7 +78,6 @@
                     android:id="@+id/tv_business_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="30dp"
                     android:layout_marginTop="30dp"
                     android:text="@{viewModel.business.name}"
                     android:textAppearance="?attr/textAppearanceListItem"
@@ -152,22 +156,45 @@
                     android:layout_marginStart="30dp"
                     android:layout_marginTop="30dp"
                     android:text="@{@string/business_details_price(viewModel.business.price)}"
-                    android:textSize="18sp"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_business_phone"
                     tools:text="Price : $$" />
 
                 <TextView
-                    android:id="@+id/tv_business_status"
+                    android:id="@+id/tv_business_status_close"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="30dp"
-                    android:layout_marginTop="30dp"
-                    android:text="Close"
-                    android:textSize="18sp"
+                    android:layout_marginTop="20dp"
+                    android:background="@color/business_close_status_color"
+                    android:padding="@dimen/business_is_closed_padding"
+                    android:text="@string/business_is_close"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/business_is_closed_text_size"
+                    android:textStyle="bold"
+                    android:visibility="@{viewModel.business.isClosed ? View.VISIBLE:View.GONE }"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_business_price"
                     tools:text="Close" />
+
+                <TextView
+                    android:id="@+id/tv_business_status_open"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@color/business_open_status_color"
+                    android:padding="@dimen/business_is_closed_padding"
+                    android:text="@string/business_is_open"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/business_is_closed_text_size"
+                    android:textStyle="bold"
+                    android:visibility="@{viewModel.business.isClosed ?View.GONE : View.VISIBLE}"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_business_status_close"
+                    tools:text="Open" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.core.widget.NestedScrollView>

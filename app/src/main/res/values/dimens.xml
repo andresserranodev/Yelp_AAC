@@ -11,4 +11,9 @@
     <dimen name="categories_radius">30dp</dimen>
     <dimen name="categories_tv_padding">5dp</dimen>
     <dimen name="categories_tv_margin">5dp</dimen>
+    <dimen name="rating_details_padding">5dp</dimen>
+    <dimen name="rating_details_radius">30dp</dimen>
+    <dimen name="business_is_closed_padding">5dp</dimen>
+    <dimen name="business_is_closed_text_size">13sp</dimen>
+
 </resources>
