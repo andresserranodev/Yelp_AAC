@@ -54,7 +54,7 @@
                     android:textColor="@android:color/white"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    tools:text="TextView 1 TextView2" />
+                    tools:text="4.1" />
             </androidx.constraintlayout.motion.widget.MotionLayout>
 
         </com.google.android.material.appbar.AppBarLayout>

@@ -19,9 +19,9 @@
             android:id="@+id/tv_category_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
+            android:layout_margin="@dimen/categories_tv_margin"
             android:background="@drawable/categories_item"
-            android:padding="5dp"
+            android:padding="@dimen/categories_tv_padding"
             android:text="@{Categories}"
             android:textColor="@android:color/white"
             tools:text="Category Name" />
