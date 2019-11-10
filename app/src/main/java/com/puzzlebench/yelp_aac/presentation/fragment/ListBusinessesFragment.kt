@@ -8,9 +8,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.observe
 import com.puzzlebench.yelp_aac.databinding.ListBusinessFragmentBinding
-import com.puzzlebench.yelp_aac.presentation.BusinessAdapter
-import com.puzzlebench.yelp_aac.presentation.ViewModelInjector
-import com.puzzlebench.yelp_aac.presentation.YelpApplication
+import com.puzzlebench.yelp_aac.presentation.adapter.BusinessAdapter
+import com.puzzlebench.yelp_aac.presentation.di.ViewModelInjector
+import com.puzzlebench.yelp_aac.presentation.android.YelpApplication
 import com.puzzlebench.yelp_aac.presentation.viewmodel.ListBusinessesViewModel
 import kotlinx.android.synthetic.main.list_business_fragment.*
 import org.jetbrains.anko.toast

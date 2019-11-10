@@ -6,4 +6,5 @@
     <string name="business_details_phone">Phone: %s </string>
     <string name="business_details_address">Address: %s </string>
     <string name="business_details_price">Price: %s </string>
+    <string name="business_image">business image</string>
 </resources>

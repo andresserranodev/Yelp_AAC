@@ -1,4 +1,4 @@
-package com.puzzlebench.yelp_aac.presentation
+package com.puzzlebench.yelp_aac.presentation.android
 
 import android.app.Application
 import com.puzzlebench.yelp_aac.ServiceLocator

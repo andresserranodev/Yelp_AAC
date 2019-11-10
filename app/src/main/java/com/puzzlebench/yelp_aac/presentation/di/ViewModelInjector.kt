@@ -1,4 +1,4 @@
-package com.puzzlebench.yelp_aac.presentation
+package com.puzzlebench.yelp_aac.presentation.di
 
 import com.puzzlebench.yelp_aac.presentation.viewmodel.DetailsBusinessViewModelFactory
 import com.puzzlebench.yelp_aac.presentation.viewmodel.ListBusinessesViewModelFactory

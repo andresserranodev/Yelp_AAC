@@ -1,4 +1,4 @@
-package com.puzzlebench.yelp_aac.presentation
+package com.puzzlebench.yelp_aac.presentation.utils
 
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
