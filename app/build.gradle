@@ -45,19 +45,16 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     def presentationDependencies = rootProject.ext.presentationDependencies
     implementation presentationDependencies.appcompat
+    implementation presentationDependencies.constraintlayout
     implementation presentationDependencies.lifecycleExtension
     implementation presentationDependencies.livedataKtx
     implementation presentationDependencies.viewmodelKtx
     implementation presentationDependencies.glide
-    implementation 'com.google.android.material:material:1.2.0-alpha01'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-alpha5'
-
-
-    api "org.jetbrains.anko:anko-commons:0.10.1"
-
+    implementation presentationDependencies.androidMaterial
 
     def generalDependencies = rootProject.ext.generalDependencies
     implementation generalDependencies.coreKtx
+    api generalDependencies.anko
     // navigation
     implementation presentationDependencies.navigationFragmentKtx
     implementation presentationDependencies.navigationUiKtx

@@ -7,5 +7,4 @@ interface LocalDataBaseBusiness {
     suspend fun getBusiness(): BusinessState
     suspend fun saveBusiness(business: Business)
     suspend fun deleteAll()
-
 }
