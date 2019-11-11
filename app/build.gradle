@@ -34,6 +34,8 @@ android {
     }
     dataBinding {
         enabled = true
+        enabledForTests = true
+
     }
     kotlinOptions {
         jvmTarget = "1.8"
@@ -80,7 +82,15 @@ dependencies {
             generalTestDependencies.kotlinTest,
             generalTestDependencies.mockitoKotlin
 
-    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    // Dependencies for Android instrumented unit tests
+    def androidTestDependencies = rootProject.ext.androidTestDependencies
+    implementation androidTestDependencies.fragmentTesting
+    implementation androidTestDependencies.fragmentKtx
+    implementation androidTestDependencies.androidXTestCore
+    androidTestImplementation androidTestDependencies.androidXTestExt
+    androidTestImplementation androidTestDependencies.espressoCore
+    androidTestImplementation androidTestDependencies.espressoContrib
+    androidTestImplementation generalTestDependencies.junit
+    androidTestImplementation androidTestDependencies.coroutinesTest
 
 }

@@ -72,4 +72,14 @@ ext {
             mockitoInline: "org.mockito:mockito-inline:${mockitoInline_version}",
             mockitoKotlin: "com.nhaarman.mockitokotlin2:mockito-kotlin:${mockitoKotlin_version}",
     ]
+
+    androidTestDependencies = [
+            fragmentTesting : "androidx.fragment:fragment-testing:1.2.0-rc01",
+            fragmentKtx     : "androidx.fragment:fragment-ktx:1.2.0-rc01",
+            androidXTestCore: "androidx.test:core:1.2.0",
+            androidXTestExt : "androidx.test.ext:junit:1.1.1",
+            espressoCore    : "androidx.test.espresso:espresso-core:3.2.0-beta01",
+            espressoContrib : "androidx.test.espresso:espresso-contrib:3.2.0-beta01",
+            coroutinesTest  : "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.2.1"
+    ]
 }

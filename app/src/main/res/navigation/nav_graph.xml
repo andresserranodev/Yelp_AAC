@@ -20,7 +20,6 @@
         tools:layout="@layout/details_business_fragment">
         <argument
             android:name="businessId"
-            android:defaultValue='""'
             app:argType="string" />
     </fragment>
 </navigation>
