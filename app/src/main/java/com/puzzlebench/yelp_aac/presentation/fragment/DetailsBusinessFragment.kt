@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.databinding.library.baseAdapters.BR.viewModel
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.observe
@@ -14,6 +15,7 @@ import com.puzzlebench.yelp_aac.R
 import com.puzzlebench.yelp_aac.databinding.DetailsBusinessFragmentBinding
 import com.puzzlebench.yelp_aac.presentation.adapter.BusinessAdapter
 import com.puzzlebench.yelp_aac.presentation.adapter.CategoriesAdapter
+import com.puzzlebench.yelp_aac.presentation.adapter.PhotosAdapter
 import com.puzzlebench.yelp_aac.presentation.di.ViewModelInjector
 import com.puzzlebench.yelp_aac.presentation.android.YelpApplication
 import com.puzzlebench.yelp_aac.presentation.viewmodel.DetailsBusinessViewModel
@@ -46,7 +48,12 @@ class DetailsBusinessFragment : Fragment() {
         binding.rvCategories.apply {
             adapter = categoriesAdapter
         }
-        subscribeViewModel(categoriesAdapter)
+        val photosAdapter = PhotosAdapter()
+        binding.rvPhotos.apply {
+            adapter = photosAdapter
+        }
+        subscribeViewModel(categoriesAdapter, photosAdapter)
+
         return binding.root
     }
 
@@ -54,7 +61,6 @@ class DetailsBusinessFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         detailsBusinessViewModel.getBusinessDetails()
         coordinateMotion()
-
     }
 
     private fun coordinateMotion() {
@@ -65,10 +71,17 @@ class DetailsBusinessFragment : Fragment() {
         appbar_layout.addOnOffsetChangedListener(listener)
     }
 
-    private fun subscribeViewModel(categoriesAdapter: CategoriesAdapter) {
+    private fun subscribeViewModel(
+        categoriesAdapter: CategoriesAdapter,
+        photosAdapter: PhotosAdapter
+    ) {
         detailsBusinessViewModel.businessCategories.observe(viewLifecycleOwner) {
             categoriesAdapter.submitList(it)
             categories_progressBar.visibility = View.GONE
+        }
+        detailsBusinessViewModel.businessPhotos.observe(viewLifecycleOwner) {
+            photosAdapter.submitList(it)
+            photos_progressBar.visibility = View.GONE
         }
     }
 }
