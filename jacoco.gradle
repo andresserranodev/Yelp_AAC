@@ -28,8 +28,6 @@ task jacocoTestReport(type: JacocoReport, dependsOn: "testDebugUnitTest") {
             '**/di/**',
             '**/adapter/**',
             '**/fragment/**',
-            '**/callbacks/**',
-            '**/workers/**',
             '**/room/**',
             '**/retrofit/**',
             '**/factory/**',
