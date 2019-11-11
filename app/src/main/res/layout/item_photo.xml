@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="photoUrl"
+            type="String" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="@dimen/item_bussines_image_width"
+        android:layout_height="@dimen/item_bussines_image_heigth"
+        android:layout_gravity="center"
+        android:layout_margin="5dp"
+        app:cardCornerRadius="@dimen/item_business_card_coner_radius"
+        app:cardElevation="@dimen/card_elevation">
+
+        <ImageView
+            android:id="@+id/business_item_image"
+            android:layout_width="@dimen/item_bussines_image_width"
+            android:layout_height="@dimen/item_bussines_image_heigth"
+            android:contentDescription="@string/business_image"
+            android:scaleType="centerCrop"
+            app:imageFromUrl="@{photoUrl}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.cardview.widget.CardView>
+</layout>
