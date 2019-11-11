@@ -7,15 +7,18 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.observe
 import androidx.navigation.fragment.navArgs
 import com.google.android.material.appbar.AppBarLayout
 import com.puzzlebench.yelp_aac.R
 import com.puzzlebench.yelp_aac.databinding.DetailsBusinessFragmentBinding
+import com.puzzlebench.yelp_aac.presentation.adapter.BusinessAdapter
 import com.puzzlebench.yelp_aac.presentation.adapter.CategoriesAdapter
 import com.puzzlebench.yelp_aac.presentation.di.ViewModelInjector
 import com.puzzlebench.yelp_aac.presentation.android.YelpApplication
 import com.puzzlebench.yelp_aac.presentation.viewmodel.DetailsBusinessViewModel
 import kotlinx.android.synthetic.main.details_business_fragment.*
+import kotlinx.android.synthetic.main.list_business_fragment.*
 
 class DetailsBusinessFragment : Fragment() {
 
@@ -43,8 +46,7 @@ class DetailsBusinessFragment : Fragment() {
         binding.rvCategories.apply {
             adapter = categoriesAdapter
         }
-        //Todo remove the fake list
-        categoriesAdapter.submitList(listOf("Categories 1", "Categories 2", "Categories 2"))
+        subscribeViewModel(categoriesAdapter)
         return binding.root
     }
 
@@ -60,8 +62,13 @@ class DetailsBusinessFragment : Fragment() {
             val seekPosition = -verticalOffset / appbar_layout.totalScrollRange.toFloat()
             motion_layout.progress = seekPosition
         }
-
         appbar_layout.addOnOffsetChangedListener(listener)
+    }
 
+    private fun subscribeViewModel(categoriesAdapter: CategoriesAdapter) {
+        detailsBusinessViewModel.businessCategories.observe(viewLifecycleOwner) {
+            categoriesAdapter.submitList(it)
+            categories_progressBar.visibility = View.GONE
+        }
     }
 }
