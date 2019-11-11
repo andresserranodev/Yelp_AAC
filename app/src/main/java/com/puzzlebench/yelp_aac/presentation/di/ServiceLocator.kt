@@ -1,4 +1,4 @@
-package com.puzzlebench.yelp_aac
+package com.puzzlebench.yelp_aac.presentation.di
 
 import android.content.Context
 import androidx.annotation.VisibleForTesting

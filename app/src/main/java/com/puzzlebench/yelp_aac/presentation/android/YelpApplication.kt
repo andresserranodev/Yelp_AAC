@@ -1,7 +1,7 @@
 package com.puzzlebench.yelp_aac.presentation.android
 
 import android.app.Application
-import com.puzzlebench.yelp_aac.ServiceLocator
+import com.puzzlebench.yelp_aac.presentation.di.ServiceLocator
 import com.puzzlebench.yelp_aac.repository.BusinessDetailsRepository
 import com.puzzlebench.yelp_aac.repository.BusinessRepository
 
