@@ -6,7 +6,6 @@ import com.puzzlebench.yelp_aac.data.remote.retrofit.BusinessDetailResponse
 import com.puzzlebench.yelp_aac.data.remote.retrofit.CategoriesResponse
 import com.puzzlebench.yelp_aac.presentation.model.BusinessDetails
 import com.puzzlebench.yelp_aac.repository.model.BusinessDetailsState
-import com.puzzlebench.yelp_aac.repository.model.BusinessState
 
 object DummyBusinessDetailsFactory {
 
