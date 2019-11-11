@@ -9,4 +9,6 @@
     <string name="business_image">business image</string>
     <string name="business_is_close">Close</string>
     <string name="business_is_open">Open</string>
+    <string name="network_error">Network error! Details: %s</string>
+    <string name="retry">Retry?</string>
 </resources>
