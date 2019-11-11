@@ -3,4 +3,7 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+    <color name="rating_color_background">#E5C145</color>
+    <color name="business_close_status_color">#D42E12</color>
+    <color name="business_open_status_color">#007854</color>
 </resources>

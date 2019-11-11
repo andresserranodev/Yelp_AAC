@@ -7,4 +7,6 @@
     <string name="business_details_address">Address: %s </string>
     <string name="business_details_price">Price: %s </string>
     <string name="business_image">business image</string>
+    <string name="business_is_close">Close</string>
+    <string name="business_is_open">Open</string>
 </resources>

@@ -46,8 +46,9 @@ class BusinessAdapter : ListAdapter<Business, RecyclerView.ViewHolder>(BusinessD
 
         private fun navigateBussinesDetails(business: Business, it: View) {
             val action =
-                ListBusinessesFragmentDirections.actionMainFragmentToDetailsBusinessFragment()
-            action.businessId = business.businessId
+                ListBusinessesFragmentDirections.actionMainFragmentToDetailsBusinessFragment(
+                    business.businessId
+                )
             Navigation.findNavController(it).navigate(action)
         }
     }
