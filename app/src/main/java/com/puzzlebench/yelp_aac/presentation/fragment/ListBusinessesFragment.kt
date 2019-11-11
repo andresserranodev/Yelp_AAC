@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.observe
+import com.google.android.material.snackbar.Snackbar
+import com.puzzlebench.yelp_aac.R
 import com.puzzlebench.yelp_aac.databinding.ListBusinessFragmentBinding
 import com.puzzlebench.yelp_aac.presentation.adapter.BusinessAdapter
 import com.puzzlebench.yelp_aac.presentation.di.ViewModelInjector
@@ -29,7 +31,7 @@ class ListBusinessesFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel.getBusiness()
         viewModel.businessError.observeForever {
-            context?.toast(it)
+            displayErrorMessage(it)
         }
     }
 
@@ -51,5 +53,20 @@ class ListBusinessesFragment : Fragment() {
             businessAdapter.submitList(it)
             progressBar.visibility = View.GONE
         }
+    }
+
+    private fun displayErrorMessage(error: String) {
+
+        activity?.let {
+            Snackbar.make(
+                it.findViewById(android.R.id.content),
+                getString(R.string.network_error, error),
+                Snackbar.LENGTH_INDEFINITE
+            )
+                .setAction(getString(R.string.retry)) {
+                    viewModel.getBusiness()
+                }.show()
+        }
+
     }
 }
