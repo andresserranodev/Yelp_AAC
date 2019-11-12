@@ -8,6 +8,8 @@ apply plugin: 'kotlin-kapt'
 
 apply plugin: "androidx.navigation.safeargs"
 
+apply from: '../jacoco.gradle'
+
 
 android {
     compileSdkVersion 28
@@ -22,6 +24,7 @@ android {
     }
     buildTypes {
         debug {
+            testCoverageEnabled true
             buildConfigField "String", "API_KEY_VALUE", '"your-private-apikey"'
             buildConfigField "String", "YELP_BASE_URL", '"https://api.yelp.com/"'
         }

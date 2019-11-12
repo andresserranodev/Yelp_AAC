@@ -16,7 +16,7 @@ import org.junit.Assert.*
 
 class BusinessRepositoryImplTest {
 
-    private lateinit var businessRepositoryImpl: BusinessRepositoryImpl
+    private lateinit var businessRepositoryImpl: BusinessRepository
 
     @Test
     fun `test empty local data`() {
