@@ -22,7 +22,7 @@ ext {
 
 
     //general dependencies
-    coroutines = '1.2.0'
+    coroutines = '1.2.1'
     anko_version = '0.10.1'
 
 
@@ -66,11 +66,13 @@ ext {
     ]
 
     generalTestDependencies = [
-            mockito      : "org.mockito:mockito-core:${mockito_version}",
-            junit        : "junit:junit:${jUnit_version}",
-            kotlinTest   : "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version",
-            mockitoInline: "org.mockito:mockito-inline:${mockitoInline_version}",
-            mockitoKotlin: "com.nhaarman.mockitokotlin2:mockito-kotlin:${mockitoKotlin_version}",
+            mockito        : "org.mockito:mockito-core:${mockito_version}",
+            junit          : "junit:junit:${jUnit_version}",
+            kotlinTest     : "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version",
+            mockitoInline  : "org.mockito:mockito-inline:${mockitoInline_version}",
+            mockitoKotlin  : "com.nhaarman.mockitokotlin2:mockito-kotlin:${mockitoKotlin_version}",
+            coroutinesTest : "org.jetbrains.kotlinx:kotlinx-coroutines-test:${coroutines}",
+            androidArchTest: "android.arch.core:core-testing:$arch_test_version"
     ]
 
     androidTestDependencies = [
@@ -80,6 +82,5 @@ ext {
             androidXTestExt : "androidx.test.ext:junit:1.1.1",
             espressoCore    : "androidx.test.espresso:espresso-core:3.2.0-beta01",
             espressoContrib : "androidx.test.espresso:espresso-contrib:3.2.0-beta01",
-            coroutinesTest  : "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.2.1"
     ]
 }

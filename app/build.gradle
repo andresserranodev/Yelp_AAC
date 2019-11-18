@@ -83,7 +83,9 @@ dependencies {
             generalTestDependencies.junit,
             generalTestDependencies.mockitoInline,
             generalTestDependencies.kotlinTest,
-            generalTestDependencies.mockitoKotlin
+            generalTestDependencies.mockitoKotlin,
+            generalTestDependencies.coroutinesTest,
+            generalTestDependencies.androidArchTest
 
     // Dependencies for Android instrumented unit tests
     def androidTestDependencies = rootProject.ext.androidTestDependencies
@@ -94,6 +96,5 @@ dependencies {
     androidTestImplementation androidTestDependencies.espressoCore
     androidTestImplementation androidTestDependencies.espressoContrib
     androidTestImplementation generalTestDependencies.junit
-    androidTestImplementation androidTestDependencies.coroutinesTest
-
+    androidTestImplementation generalTestDependencies.coroutinesTest
 }
