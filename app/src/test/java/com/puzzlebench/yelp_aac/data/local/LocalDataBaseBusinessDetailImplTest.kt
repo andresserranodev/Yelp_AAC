@@ -71,12 +71,23 @@ class LocalDataBaseBusinessDetailImplTest {
                     businessDetails.businessId,
                     it
                 )
-            }
-            businessDetails.photos.forEach{
-                verify(mapper).transformRepositoryToCategoriesEntity(
+                val mapperResult = mapper.transformRepositoryToCategoriesEntity(
                     businessDetails.businessId,
                     it
                 )
+                verify(categoriesDao).insertCategories(mapperResult)
+            }
+
+            businessDetails.photos.forEach {
+                verify(mapper).transformPhotoRepositoryToEntity(
+                    businessDetails.businessId,
+                    it
+                )
+                val mapperResult = mapper.transformPhotoRepositoryToEntity(
+                    businessDetails.businessId,
+                    it
+                )
+                verify(photoDao).insertPhoto(mapperResult)
             }
         }
     }
