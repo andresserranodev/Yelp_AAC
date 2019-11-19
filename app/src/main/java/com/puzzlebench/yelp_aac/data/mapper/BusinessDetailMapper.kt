@@ -16,10 +16,10 @@ class BusinessDetailMapper {
         )
 
     fun transformRepositoryToCategoriesEntity(businessId: String, title: String) =
-        CategoriesEntity(0, businessId, title)
+        CategoriesEntity(businessId, title)
 
     fun transformPhotoRepositoryToEntity(businessId: String, url: String) =
-        PhotoEntity(0, businessId, url)
+        PhotoEntity(businessId, url)
 
     private fun getCategories(categoriesResponse: List<CategoriesResponse>): List<String> =
         categoriesResponse.map { it.title }

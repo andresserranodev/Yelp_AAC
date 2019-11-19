@@ -29,14 +29,12 @@ object DummyBusinessDetailsFactory {
 
     private fun getDummyCategoriesEntity(seed: String) =
         CategoriesEntity(
-            0,
             "${BUSINESS_ID}$seed",
             "$CATEGORY_TITLE$seed"
         )
 
     private fun getDummyPhotosEntity(seed: String) =
         PhotoEntity(
-            0,
             "${BUSINESS_ID}$seed",
             "$URL_PHOTO$seed"
 
