@@ -3,6 +3,7 @@ package com.puzzlebench.yelp_aac.data.local
 import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.verify
+import com.puzzlebench.yelp_aac.DummyBusinessDetailsFactory.getDummyBusinessDetails
 import com.puzzlebench.yelp_aac.DummyBusinessDetailsFactory.getDummyListCategoriesEntity
 import com.puzzlebench.yelp_aac.DummyBusinessDetailsFactory.getDummyListPhotosEntity
 import com.puzzlebench.yelp_aac.data.local.room.dao.BusinessDao
@@ -12,7 +13,6 @@ import com.puzzlebench.yelp_aac.data.mapper.BusinessDetailMapper
 import com.puzzlebench.yelp_aac.data.mapper.BusinessMapper
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
-import org.junit.Ignore
 import org.junit.Test
 
 class LocalDataBaseBusinessDetailImplTest {
@@ -21,9 +21,11 @@ class LocalDataBaseBusinessDetailImplTest {
     private lateinit var localDataBaseBusinessDetail: LocalDataBaseBusinessDetail
     private val localDataCategoriesEntity = getDummyListCategoriesEntity()
     private val localDataPhotosEntity = getDummyListPhotosEntity()
+    private val businessDetails = getDummyBusinessDetails()
 
     private val categoriesDao = mock<CategoriesDao> {
         onBlocking { getCategoriesByBusinessId(businessId) } doReturn localDataCategoriesEntity
+
     }
 
     private val photoDao = mock<PhotoDao> {
@@ -57,6 +59,25 @@ class LocalDataBaseBusinessDetailImplTest {
                 localDataCategoriesEntity,
                 localDataPhotosEntity
             )
+        }
+    }
+
+    @Test
+    fun insertBusinessDetails() {
+        runBlocking {
+            localDataBaseBusinessDetail.insertBusinessDetails(businessDetails)
+            businessDetails.categories.forEach {
+                verify(mapper).transformRepositoryToCategoriesEntity(
+                    businessDetails.businessId,
+                    it
+                )
+            }
+            businessDetails.photos.forEach{
+                verify(mapper).transformRepositoryToCategoriesEntity(
+                    businessDetails.businessId,
+                    it
+                )
+            }
         }
     }
 
