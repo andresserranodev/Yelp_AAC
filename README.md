@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/adsf117/Yelp_AAC.svg?branch=develop)](https://travis-ci.org/adsf117/Yelp_AAC.svg?branch=develop)
+[![Build Status](https://travis-ci.org/adsf117/Yelp_AAC.svg?branch=develop)](https://travis-ci.org/adsf117/Yelp_AAC)
 [![codecov](https://codecov.io/gh/adsf117/Yelp_AAC/branch/develop/graph/badge.svg)](https://codecov.io/gh/adsf117/Yelp_AAC)
 [![CodeFactor](https://www.codefactor.io/repository/github/adsf117/clean_post_aac/badge)](https://www.codefactor.io/repository/github/adsf117/clean_post_aac)
 # Yelp Android Architecture Components
