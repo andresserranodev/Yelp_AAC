@@ -1,5 +1,6 @@
 package com.puzzlebench.yelp_aac
 
+import com.puzzlebench.yelp_aac.data.local.room.entity.BusinessEntity
 import com.puzzlebench.yelp_aac.data.local.room.entity.CategoriesEntity
 import com.puzzlebench.yelp_aac.data.local.room.entity.PhotoEntity
 import com.puzzlebench.yelp_aac.data.remote.retrofit.BusinessDetailResponse
@@ -29,14 +30,12 @@ object DummyBusinessDetailsFactory {
 
     private fun getDummyCategoriesEntity(seed: String) =
         CategoriesEntity(
-            0,
             "${BUSINESS_ID}$seed",
             "$CATEGORY_TITLE$seed"
         )
 
     private fun getDummyPhotosEntity(seed: String) =
         PhotoEntity(
-            0,
             "${BUSINESS_ID}$seed",
             "$URL_PHOTO$seed"
 
@@ -54,7 +53,7 @@ object DummyBusinessDetailsFactory {
         "$URL_PHOTO$it"
     }
 
-    private fun getDummyBusinessDetails() = BusinessDetails("", listOf(), listOf())
+    fun getDummyBusinessDetails() = BusinessDetails("", listOf(), listOf())
 
     fun getBusinessDetailsNoError() = BusinessDetailsState(getDummyBusinessDetails())
 

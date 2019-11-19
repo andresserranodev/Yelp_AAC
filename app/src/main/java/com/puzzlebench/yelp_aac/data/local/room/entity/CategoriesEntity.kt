@@ -5,7 +5,9 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "business_categories_table")
 data class CategoriesEntity constructor(
-    @PrimaryKey(autoGenerate = true) var categoriesId: Long,
     var businessId: String,
     val title: String
-)
+) {
+    @PrimaryKey(autoGenerate = true)
+    var categoriesId: Long = 0
+}

@@ -40,6 +40,24 @@ class BusinessDetailMapperTest {
         assertDataEquality(response, result)
     }
 
+    @Test
+    fun transformRepositoryToCategoriesEntity() {
+        val bushinessId = "1"
+        val title = "title"
+        val result = mapper.transformRepositoryToCategoriesEntity(bushinessId, title)
+        assertEquals(result.businessId, bushinessId)
+        assertEquals(result.title, title)
+    }
+
+    @Test
+    fun transformPhotoRepositoryToEntity() {
+        val bushinessId = "1"
+        val urlPhoto = "www.yelp.com/photo.png"
+        val result = mapper.transformPhotoRepositoryToEntity(bushinessId, urlPhoto)
+        assertEquals(result.businessId, bushinessId)
+        assertEquals(result.photoUrl, urlPhoto)
+    }
+
     private fun assertDataEquality(response: BusinessDetailResponse, repository: BusinessDetails) {
         assertEquals(repository.businessId, response.businessId)
         response.categories.forEachIndexed { index, responseTitle ->
