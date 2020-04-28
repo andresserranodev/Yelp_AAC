@@ -18,6 +18,4 @@ abstract class YelpDataBase : RoomDatabase() {
     abstract fun businessDao(): BusinessDao
     abstract fun categoriesDao(): CategoriesDao
     abstract fun photoDao(): PhotoDao
-
-
 }

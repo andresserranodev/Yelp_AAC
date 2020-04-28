@@ -11,7 +11,6 @@ import com.puzzlebench.yelp_aac.data.mapper.UNDEFINED_ERROR_LOCAL_DATA_BASE_BUSI
 import com.puzzlebench.yelp_aac.presentation.model.Business
 import com.puzzlebench.yelp_aac.presentation.model.BusinessDetails
 import com.puzzlebench.yelp_aac.repository.model.BusinessDetailsState
-import com.puzzlebench.yelp_aac.repository.model.BusinessState
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -42,7 +41,6 @@ class LocalDataBaseBusinessDetailImpl constructor(
                         resultPhoto
                     )
                 )
-
             } catch (e: Exception) {
                 BusinessDetailsState(
                     null,
@@ -75,5 +73,4 @@ class LocalDataBaseBusinessDetailImpl constructor(
         categoriesDao.deleteAllCategories()
         photoDao.deleteAllPhotos()
     }
-
 }

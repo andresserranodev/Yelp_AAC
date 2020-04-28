@@ -19,7 +19,6 @@ class BusinessDetailsRepositoryImplTest {
         onBlocking { fetchBusinessDetailsById(businessId) } doReturn serviceResponse
     }
 
-
     @Test
     fun `test empty local data`() {
         val businessLocalData = mock<LocalDataBaseBusinessDetail> {

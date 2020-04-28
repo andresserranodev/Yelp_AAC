@@ -37,7 +37,6 @@ class LocalDataBaseBusinessImplTest {
         }
     }
 
-
     @Test
     fun saveBusiness() {
         runBlocking {

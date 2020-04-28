@@ -64,4 +64,3 @@ private class BusinessDiffCallback : DiffUtil.ItemCallback<Business>() {
         return oldItem == newItem
     }
 }
-
