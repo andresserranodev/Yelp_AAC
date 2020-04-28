@@ -33,7 +33,6 @@ class CategoriesAdapter : ListAdapter<String, RecyclerView.ViewHolder>(Categorie
             }
         }
     }
-
 }
 
 private class CategoriesDiffCallback : DiffUtil.ItemCallback<String>() {

@@ -8,8 +8,6 @@ import com.puzzlebench.yelp_aac.data.mapper.BusinessDetailMapper
 import com.puzzlebench.yelp_aac.data.remote.retrofit.YelpApiV3
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
-
-import org.junit.Assert.*
 import org.junit.Test
 
 class RemoteFetchBusinessDetailsByIdImplTest {

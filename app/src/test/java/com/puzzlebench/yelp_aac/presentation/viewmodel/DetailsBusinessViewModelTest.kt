@@ -26,7 +26,6 @@ class DetailsBusinessViewModelTest {
     private lateinit var detailsBusinessViewModel: DetailsBusinessViewModel
     private val businessDetailsRepository = mock<BusinessDetailsRepository> {
         onBlocking { getBusinessDetailsById(businessId) } doReturn getBusinessDetailsNoError()
-
     }
 
     @Before
@@ -41,6 +40,5 @@ class DetailsBusinessViewModelTest {
         runBlocking {
             verify(businessDetailsRepository).getBusinessDetailsById(businessId)
         }
-
     }
 }

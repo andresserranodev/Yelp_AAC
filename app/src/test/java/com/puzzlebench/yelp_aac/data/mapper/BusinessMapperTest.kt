@@ -7,9 +7,8 @@ import com.puzzlebench.yelp_aac.DummyBusinessFactory.getDummyBusinessResponseNul
 import com.puzzlebench.yelp_aac.data.local.room.entity.BusinessEntity
 import com.puzzlebench.yelp_aac.data.remote.retrofit.BusinessResponse
 import com.puzzlebench.yelp_aac.presentation.model.Business
+import org.junit.Assert.assertEquals
 import org.junit.Before
-
-import org.junit.Assert.*
 import org.junit.Test
 
 class BusinessMapperTest {
@@ -64,5 +63,4 @@ class BusinessMapperTest {
         assertEquals(repository.imageUrl, entity.imageUrl)
         assertEquals(repository.displayPhone, entity.displayPhone)
     }
-
 }

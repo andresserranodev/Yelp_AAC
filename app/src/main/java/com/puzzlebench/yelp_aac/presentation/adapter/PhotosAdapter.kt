@@ -33,7 +33,6 @@ class PhotosAdapter : ListAdapter<String, RecyclerView.ViewHolder>(PhotosDiffCal
             }
         }
     }
-
 }
 
 private class PhotosDiffCallback : DiffUtil.ItemCallback<String>() {

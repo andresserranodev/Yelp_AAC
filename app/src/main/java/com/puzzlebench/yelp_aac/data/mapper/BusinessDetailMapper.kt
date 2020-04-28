@@ -33,6 +33,4 @@ class BusinessDetailMapper {
             categoriesEntity.map { it.title },
             photoEntity.map { it.photoUrl }
         )
-
-
 }

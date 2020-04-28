@@ -25,7 +25,6 @@ class LocalDataBaseBusinessImpl internal constructor(
         } catch (e: Exception) {
             BusinessState(listOf(), e.message ?: UNDEFINED_ERROR_LOCAL_DATA_BASE_BUSINESS)
         }
-
     }
 
     override suspend fun saveBusiness(business: Business) {

@@ -8,7 +8,6 @@ import com.puzzlebench.yelp_aac.data.mapper.BusinessMapper
 import com.puzzlebench.yelp_aac.data.remote.retrofit.YelpApiV3
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
-
 import org.junit.Test
 
 class RemoteFetchSwitzerlandBusinessesImplTest {
@@ -20,13 +19,11 @@ class RemoteFetchSwitzerlandBusinessesImplTest {
     }
     private var businessMapper = mock<BusinessMapper>()
 
-
     @Before
     fun setUp() {
         remoteFetchSwitzerlandBusinesses =
             RemoteFetchSwitzerlandBusinessesImpl(service, businessMapper)
     }
-
 
     @Test
     fun getSwitzerlandBusiness() {

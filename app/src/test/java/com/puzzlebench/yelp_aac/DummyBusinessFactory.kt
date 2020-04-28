@@ -51,7 +51,6 @@ object DummyBusinessFactory {
             "$PRICE$seed"
         )
 
-
     fun getDummyListBusinessEntity(): List<BusinessEntity> = (1..20).map {
         getDummyBusinessEntity(it.toString())
     }
@@ -75,11 +74,9 @@ object DummyBusinessFactory {
 
     fun getBussinesStateEmpty() = BusinessState(listOf())
 
-
     fun getBussinesStateNoError() = BusinessState(getDummyListBusiness())
 
     private fun getDummyListBusinessResponse(): List<BusinessResponse> = (1..20).map {
         getDummyBusinessResponse(it.toString())
     }
-
 }

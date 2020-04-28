@@ -7,8 +7,8 @@ import com.puzzlebench.yelp_aac.repository.BusinessDetailsRepository
 import kotlinx.coroutines.launch
 
 class DetailsBusinessViewModel internal constructor(
-    private val businessDetailsRepository: BusinessDetailsRepository, private
-    val businessId: String
+    private val businessDetailsRepository: BusinessDetailsRepository,
+    private val businessId: String
 ) :
     ViewModel() {
 
@@ -16,7 +16,6 @@ class DetailsBusinessViewModel internal constructor(
     val businessCategories = MutableLiveData<List<String>>()
     val businessPhotos = MutableLiveData<List<String>>()
     val errorFetchingData = MutableLiveData<String>()
-
 
     fun getBusinessDetails() {
         viewModelScope.launch {
@@ -29,5 +28,4 @@ class DetailsBusinessViewModel internal constructor(
             }
         }
     }
-
 }

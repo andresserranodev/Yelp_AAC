@@ -17,7 +17,6 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.junit.Test
 import org.junit.runner.RunWith
 
-
 @MediumTest
 @ExperimentalCoroutinesApi
 @RunWith(AndroidJUnit4::class)

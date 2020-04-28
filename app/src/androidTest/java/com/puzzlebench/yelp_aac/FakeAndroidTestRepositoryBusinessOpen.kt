@@ -11,7 +11,6 @@ class FakeAndroidTestRepositoryBusinessOpen : BusinessDetailsRepository {
 
     private val observableTasks = MutableLiveData<Business>()
 
-
     override suspend fun getBusinessDetailsById(businessId: String): BusinessDetailsState {
         return DummyBusinessFactoryAndroid.getDyummyBusinessDetailsState()
     }

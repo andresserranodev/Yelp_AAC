@@ -15,8 +15,8 @@ import com.puzzlebench.yelp_aac.R
 import com.puzzlebench.yelp_aac.databinding.DetailsBusinessFragmentBinding
 import com.puzzlebench.yelp_aac.presentation.adapter.CategoriesAdapter
 import com.puzzlebench.yelp_aac.presentation.adapter.PhotosAdapter
-import com.puzzlebench.yelp_aac.presentation.di.ViewModelInjector
 import com.puzzlebench.yelp_aac.presentation.android.YelpApplication
+import com.puzzlebench.yelp_aac.presentation.di.ViewModelInjector
 import com.puzzlebench.yelp_aac.presentation.viewmodel.DetailsBusinessViewModel
 import kotlinx.android.synthetic.main.details_business_fragment.*
 
@@ -32,7 +32,8 @@ class DetailsBusinessFragment : Fragment() {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
 
@@ -98,6 +99,5 @@ class DetailsBusinessFragment : Fragment() {
                     detailsBusinessViewModel.getBusinessDetails()
                 }.show()
         }
-
     }
 }

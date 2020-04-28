@@ -1,7 +1,5 @@
 package com.puzzlebench.yelp_aac
 
-import com.puzzlebench.yelp_aac.data.remote.retrofit.BusinessResponse
-import com.puzzlebench.yelp_aac.data.remote.retrofit.Location
 import com.puzzlebench.yelp_aac.presentation.model.Business
 import com.puzzlebench.yelp_aac.presentation.model.BusinessDetails
 import com.puzzlebench.yelp_aac.repository.model.BusinessDetailsState
@@ -13,7 +11,6 @@ object DummyBusinessFactoryAndroid {
     const val DISPLAY_PHONE = "(121)-3123132"
     const val DISPLAY_ADDRESS = "dasdadsada"
     const val PRICE = "$$$"
-
 
     fun getDummyBusinessResponseIsClose(seed: String) = Business(
         "$BUSINESS_ID$seed",
@@ -36,7 +33,6 @@ object DummyBusinessFactoryAndroid {
         4.5F,
         PRICE
     )
-
 
     fun getDyummyBusinessDetailsState() = BusinessDetailsState(
         getDummyBusinessDetails()

@@ -25,7 +25,6 @@ class LocalDataBaseBusinessDetailImplTest {
 
     private val categoriesDao = mock<CategoriesDao> {
         onBlocking { getCategoriesByBusinessId(businessId) } doReturn localDataCategoriesEntity
-
     }
 
     private val photoDao = mock<PhotoDao> {
@@ -35,7 +34,6 @@ class LocalDataBaseBusinessDetailImplTest {
     private val businessDao = mock<BusinessDao>()
     private val mapper = mock<BusinessDetailMapper>()
     private val businessMapper = mock<BusinessMapper>()
-
 
     @Before
     fun setUp() {
@@ -98,7 +96,6 @@ class LocalDataBaseBusinessDetailImplTest {
             localDataBaseBusinessDetail.deleteAllBusinessDetails()
             verify(categoriesDao).deleteAllCategories()
             verify(photoDao).deleteAllPhotos()
-
         }
     }
 }

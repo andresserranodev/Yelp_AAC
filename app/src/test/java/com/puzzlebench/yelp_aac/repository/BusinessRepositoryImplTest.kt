@@ -9,10 +9,7 @@ import com.puzzlebench.yelp_aac.DummyBusinessFactory.getBussinesStateNoError
 import com.puzzlebench.yelp_aac.data.local.LocalDataBaseBusiness
 import com.puzzlebench.yelp_aac.data.remote.RemoteFetchSwitzerlandBusinesses
 import kotlinx.coroutines.runBlocking
-import org.junit.Before
 import org.junit.Test
-
-import org.junit.Assert.*
 
 class BusinessRepositoryImplTest {
 
@@ -36,7 +33,6 @@ class BusinessRepositoryImplTest {
             verify(fetchSwitzerlandBusinesses).fetchSwitzerlandBusiness()
             serviceResponse.businesses.forEach {
                 verify(businessLocalData).saveBusiness(it)
-
             }
         }
     }
