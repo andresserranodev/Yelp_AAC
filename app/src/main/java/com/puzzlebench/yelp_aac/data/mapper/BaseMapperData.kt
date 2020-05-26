@@ -8,7 +8,7 @@ package com.puzzlebench.yelp_aac.data.mapper
  * @param <R> the Repository  model input type
  * @param <E> the Entity model input type
  */
-interface BaseMapperData<S,  R,  E> {
+interface BaseMapperData<S, R, E> {
     fun transformServiceToRepository(service: S): R
     fun transformEntityToRepository(entity: E): R
     fun transformRepositoryToEntity(repository: R): E
