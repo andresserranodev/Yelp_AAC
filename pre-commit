@@ -2,8 +2,9 @@
 
 git stash -q --keep-index
 
-echo "Running git pre-commit hook"
+echo "Running Yelp_AAC git pre-commit hook"
 
+./gradlew ktlintFormat
 ./gradlew ktlint
 
 RESULT=$?
