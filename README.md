@@ -65,4 +65,6 @@ Raywenderlich
 
 Others:
 * [How to configure JaCoCo for Kotlin & Java project](http://vgaidarji.me/blog/2017/12/20/how-to-configure-jacoco-for-kotlin-and-java-project/)
+* [Android, ktlint, and pre-commit Git Hook](https://medium.com/@alistair.cerio/android-ktlint-and-pre-commit-git-hook-5dd606e230a9)
+
 * [Mocking Coroutines](https://proandroiddev.com/mocking-coroutines-7024073a8c09)
