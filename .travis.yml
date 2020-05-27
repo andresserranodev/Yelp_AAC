@@ -52,6 +52,7 @@ before_install:
   - ./gradlew dependencies || true
 
 script:
+  - ./gradlew ktlint
   - echo "Building app"
   - android-wait-for-emulator
   - adb devices   #Display list of devices
