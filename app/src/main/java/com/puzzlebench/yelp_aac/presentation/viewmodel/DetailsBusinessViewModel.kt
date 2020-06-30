@@ -19,7 +19,6 @@ class DetailsBusinessViewModel internal constructor(
     val detailsBusinessViewState: LiveData<DetailsBusinessViewState>
         get() = detailsBusinessViewStateMutable
 
-
     fun getBusinessDetails() {
         viewModelScope.launch {
             val result = businessDetailsRepository.getBusinessDetailsById(businessId)
