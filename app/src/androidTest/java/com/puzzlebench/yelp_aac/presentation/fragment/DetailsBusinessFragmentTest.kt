@@ -11,6 +11,7 @@ import androidx.test.filters.MediumTest
 import com.puzzlebench.yelp_aac.FakeAndroidTestRepositoryBusinessClose
 import com.puzzlebench.yelp_aac.FakeAndroidTestRepositoryBusinessOpen
 import com.puzzlebench.yelp_aac.R
+import com.puzzlebench.yelp_aac.presentation.deatils.DetailsBusinessFragment
 import com.puzzlebench.yelp_aac.presentation.di.ServiceLocator
 import com.puzzlebench.yelp_aac.repository.BusinessDetailsRepository
 import kotlinx.coroutines.ExperimentalCoroutinesApi

@@ -1,4 +1,4 @@
-package com.puzzlebench.yelp_aac.presentation.viewmodel
+package com.puzzlebench.yelp_aac.presentation.list
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

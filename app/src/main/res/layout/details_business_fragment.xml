@@ -14,7 +14,7 @@
 
         <variable
             name="viewModel"
-            type="com.puzzlebench.yelp_aac.presentation.viewmodel.DetailsBusinessViewModel" />
+            type="com.puzzlebench.yelp_aac.presentation.deatils.DetailsBusinessViewModel" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout

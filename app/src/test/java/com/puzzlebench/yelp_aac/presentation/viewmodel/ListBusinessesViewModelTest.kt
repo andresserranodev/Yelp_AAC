@@ -5,6 +5,7 @@ import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.verify
 import com.puzzlebench.yelp_aac.DummyBusinessFactory.getBussinesStateNoError
+import com.puzzlebench.yelp_aac.presentation.list.ListBusinessesViewModel
 import com.puzzlebench.yelp_aac.repository.BusinessRepository
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.runBlocking
@@ -28,7 +29,10 @@ class ListBusinessesViewModelTest {
 
     @Before
     fun setUp() {
-        listBusinessesViewModel = ListBusinessesViewModel(businessRepository)
+        listBusinessesViewModel =
+            ListBusinessesViewModel(
+                businessRepository
+            )
     }
 
     @Test

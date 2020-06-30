@@ -1,8 +1,7 @@
-package com.puzzlebench.yelp_aac.presentation.viewmodel.factory
+package com.puzzlebench.yelp_aac.presentation.deatils
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.puzzlebench.yelp_aac.presentation.viewmodel.DetailsBusinessViewModel
 import com.puzzlebench.yelp_aac.repository.BusinessDetailsRepository
 
 @Suppress("UNCHECKED_CAST")
