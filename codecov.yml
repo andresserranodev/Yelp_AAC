@@ -36,3 +36,4 @@ ignore:
   - "**/room/**"
   - "**/factory/**"
   - "**/activity/**"
+  - "**/state/**"

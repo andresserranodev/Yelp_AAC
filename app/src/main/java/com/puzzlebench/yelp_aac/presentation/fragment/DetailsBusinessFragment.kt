@@ -18,6 +18,7 @@ import com.puzzlebench.yelp_aac.presentation.adapter.PhotosAdapter
 import com.puzzlebench.yelp_aac.presentation.android.YelpApplication
 import com.puzzlebench.yelp_aac.presentation.di.ViewModelInjector
 import com.puzzlebench.yelp_aac.presentation.viewmodel.DetailsBusinessViewModel
+import com.puzzlebench.yelp_aac.presentation.viewmodel.state.DetailsBusinessViewState
 import kotlinx.android.synthetic.main.details_business_fragment.*
 
 class DetailsBusinessFragment : Fragment() {
@@ -74,30 +75,32 @@ class DetailsBusinessFragment : Fragment() {
         categoriesAdapter: CategoriesAdapter,
         photosAdapter: PhotosAdapter
     ) {
-        detailsBusinessViewModel.businessCategories.observe(viewLifecycleOwner) {
-            categoriesAdapter.submitList(it)
-            categories_progressBar.visibility = View.GONE
-        }
-        detailsBusinessViewModel.businessPhotos.observe(viewLifecycleOwner) {
-            photosAdapter.submitList(it)
-            photos_progressBar.visibility = View.GONE
-        }
-        detailsBusinessViewModel.errorFetchingData.observe(viewLifecycleOwner) {
-            displayErrorMessage(it)
+        detailsBusinessViewModel.detailsBusinessViewState.observe(viewLifecycleOwner) {
+            when (it) {
+                is DetailsBusinessViewState.ShowPhotos -> {
+                    photosAdapter.submitList(it.photos)
+                    photos_progressBar.visibility = View.GONE
+                }
+                is DetailsBusinessViewState.ShowCategories -> {
+                    categoriesAdapter.submitList(it.categories)
+                    categories_progressBar.visibility = View.GONE
+                }
+                is DetailsBusinessViewState.ShowErrorMessage -> {
+                    displayErrorMessage(it.message)
+                }
+            }
         }
     }
 
     private fun displayErrorMessage(error: String) {
-
         activity?.let {
             Snackbar.make(
                 it.findViewById(android.R.id.content),
                 getString(R.string.network_error, error),
                 Snackbar.LENGTH_INDEFINITE
-            )
-                .setAction(getString(R.string.retry)) {
-                    detailsBusinessViewModel.getBusinessDetails()
-                }.show()
+            ).setAction(getString(R.string.retry)) {
+                detailsBusinessViewModel.getBusinessDetails()
+            }.show()
         }
     }
 }

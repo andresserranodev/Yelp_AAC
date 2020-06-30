@@ -13,6 +13,7 @@ import com.puzzlebench.yelp_aac.databinding.ListBusinessFragmentBinding
 import com.puzzlebench.yelp_aac.presentation.adapter.BusinessAdapter
 import com.puzzlebench.yelp_aac.presentation.android.YelpApplication
 import com.puzzlebench.yelp_aac.presentation.di.ViewModelInjector
+import com.puzzlebench.yelp_aac.presentation.viewmodel.state.BusinessViewState
 import com.puzzlebench.yelp_aac.presentation.viewmodel.ListBusinessesViewModel
 import kotlinx.android.synthetic.main.list_business_fragment.*
 
@@ -28,8 +29,20 @@ class ListBusinessesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.getBusiness()
-        viewModel.businessError.observeForever {
-            displayErrorMessage(it)
+    }
+
+    private fun onViewState(
+        businessViewState: BusinessViewState,
+        businessAdapter: BusinessAdapter
+    ) {
+        when (businessViewState) {
+            is BusinessViewState.ShowBusiness -> {
+                businessAdapter.submitList(businessViewState.business)
+                progressBar.visibility = View.GONE
+            }
+            is BusinessViewState.ShowErrorMessage -> {
+                displayErrorMessage(businessViewState.message)
+            }
         }
     }
 
@@ -43,15 +56,10 @@ class ListBusinessesFragment : Fragment() {
         binding.businessListRv.apply {
             adapter = businessAdapter
         }
-        subscribeViewModel(businessAdapter)
-        return binding.root
-    }
-
-    private fun subscribeViewModel(businessAdapter: BusinessAdapter) {
-        viewModel.business.observe(viewLifecycleOwner) {
-            businessAdapter.submitList(it)
-            progressBar.visibility = View.GONE
+        viewModel.businessState.observe(viewLifecycleOwner) {
+            onViewState(it, businessAdapter)
         }
+        return binding.root
     }
 
     private fun displayErrorMessage(error: String) {
