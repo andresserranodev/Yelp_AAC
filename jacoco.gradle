@@ -31,6 +31,7 @@ task jacocoTestReport(type: JacocoReport, dependsOn: "testDebugUnitTest") {
             '**/room/**',
             '**/retrofit/**',
             '**/factory/**',
+            '**/state/**'
     ]
     // generated classes
     classDirectories = fileTree(
