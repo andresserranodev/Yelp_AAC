@@ -4,15 +4,14 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.verify
-import com.puzzlebench.yelp_aac.DummyBusinessDetailsFactory
 import com.puzzlebench.yelp_aac.DummyBusinessFactory.getBussinesStateNoError
+import com.puzzlebench.yelp_aac.presentation.list.ListBusinessesViewModel
 import com.puzzlebench.yelp_aac.repository.BusinessRepository
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Test
 
-import org.junit.Assert.*
 import org.junit.Rule
 import org.junit.rules.TestRule
 
@@ -33,7 +32,10 @@ class ListBusinessesViewModelTest {
 
     @Before
     fun setUp() {
-        listBusinessesViewModel = ListBusinessesViewModel(businessRepository)
+        listBusinessesViewModel =
+            ListBusinessesViewModel(
+                businessRepository
+            )
     }
 
     @Test

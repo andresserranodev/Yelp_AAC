@@ -1,6 +1,6 @@
 package com.puzzlebench.yelp_aac.repository.model
 
-import com.puzzlebench.yelp_aac.presentation.model.Business
+import com.puzzlebench.yelp_aac.presentation.list.Business
 
 const val NO_ERROR = ""
 

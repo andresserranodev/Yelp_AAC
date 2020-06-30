@@ -3,7 +3,7 @@ package com.puzzlebench.yelp_aac.repository
 import androidx.lifecycle.LiveData
 import com.puzzlebench.yelp_aac.data.local.LocalDataBaseBusinessDetail
 import com.puzzlebench.yelp_aac.data.remote.RemoteFetchBusinessDetailsById
-import com.puzzlebench.yelp_aac.presentation.model.Business
+import com.puzzlebench.yelp_aac.presentation.list.Business
 import com.puzzlebench.yelp_aac.repository.model.BusinessDetailsState
 
 class BusinessDetailsRepositoryImpl constructor(

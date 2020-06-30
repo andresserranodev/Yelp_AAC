@@ -1,17 +1,17 @@
-package com.puzzlebench.yelp_aac.presentation.adapter
+package com.puzzlebench.yelp_aac.presentation.details
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.puzzlebench.yelp_aac.databinding.ItemPhotoBinding
+import com.puzzlebench.yelp_aac.databinding.ItemCategoriesBinding
 
-class PhotosAdapter : ListAdapter<String, RecyclerView.ViewHolder>(PhotosDiffCallback()) {
+class CategoriesAdapter : ListAdapter<String, RecyclerView.ViewHolder>(CategoriesDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return PhotosViewHolder(
-            ItemPhotoBinding.inflate(
+        return CategoriesViewHolder(
+            ItemCategoriesBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
@@ -20,15 +20,15 @@ class PhotosAdapter : ListAdapter<String, RecyclerView.ViewHolder>(PhotosDiffCal
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        (holder as PhotosViewHolder).bind(getItem(position))
+        (holder as CategoriesViewHolder).bind(getItem(position))
     }
 
-    class PhotosViewHolder(private val binding: ItemPhotoBinding) :
+    class CategoriesViewHolder(private val binding: ItemCategoriesBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: String) {
             binding.apply {
-                photoUrl = item
+                categories = item
                 executePendingBindings()
             }
         }
@@ -36,7 +36,7 @@ class PhotosAdapter : ListAdapter<String, RecyclerView.ViewHolder>(PhotosDiffCal
 
 }
 
-private class PhotosDiffCallback : DiffUtil.ItemCallback<String>() {
+private class CategoriesDiffCallback : DiffUtil.ItemCallback<String>() {
 
     override fun areItemsTheSame(oldItem: String, newItem: String): Boolean {
         return oldItem == newItem

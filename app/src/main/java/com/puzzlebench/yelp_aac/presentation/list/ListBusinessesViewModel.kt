@@ -1,11 +1,9 @@
-package com.puzzlebench.yelp_aac.presentation.viewmodel
+package com.puzzlebench.yelp_aac.presentation.list
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.puzzlebench.yelp_aac.presentation.model.Business
 import com.puzzlebench.yelp_aac.repository.BusinessRepository
-import com.puzzlebench.yelp_aac.repository.model.BusinessState
 import kotlinx.coroutines.launch
 
 class ListBusinessesViewModel internal constructor(private val businessRepository: BusinessRepository) :

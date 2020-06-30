@@ -4,7 +4,7 @@ import com.puzzlebench.yelp_aac.data.local.room.entity.BusinessEntity
 import com.puzzlebench.yelp_aac.data.remote.retrofit.BusinessResponse
 import com.puzzlebench.yelp_aac.data.remote.retrofit.Location
 import com.puzzlebench.yelp_aac.data.remote.retrofit.YelpResponse
-import com.puzzlebench.yelp_aac.presentation.model.Business
+import com.puzzlebench.yelp_aac.presentation.list.Business
 import com.puzzlebench.yelp_aac.repository.model.BusinessState
 
 object DummyBusinessFactory {
@@ -60,16 +60,17 @@ object DummyBusinessFactory {
         getDummyBusiness(it.toString())
     }
 
-    fun getDummyBusiness(seed: String) = Business(
-        "$BUSINESS_ID$seed",
-        "$BASE_NAME$seed",
-        "$IMAGE_URL$seed",
-        "$DISPLAY_PHONE$seed",
-        "$DISPLAY_ADDRESS$seed",
-        true,
-        4.5F,
-        "$PRICE$seed"
-    )
+    fun getDummyBusiness(seed: String) =
+        Business(
+            "$BUSINESS_ID$seed",
+            "$BASE_NAME$seed",
+            "$IMAGE_URL$seed",
+            "$DISPLAY_PHONE$seed",
+            "$DISPLAY_ADDRESS$seed",
+            true,
+            4.5F,
+            "$PRICE$seed"
+        )
 
     fun getBussinesStateError() = BusinessState(listOf(), "Error")
 

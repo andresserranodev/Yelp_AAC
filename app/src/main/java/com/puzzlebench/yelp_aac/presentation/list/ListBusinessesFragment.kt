@@ -1,4 +1,4 @@
-package com.puzzlebench.yelp_aac.presentation.fragment
+package com.puzzlebench.yelp_aac.presentation.list
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,12 +10,9 @@ import androidx.lifecycle.observe
 import com.google.android.material.snackbar.Snackbar
 import com.puzzlebench.yelp_aac.R
 import com.puzzlebench.yelp_aac.databinding.ListBusinessFragmentBinding
-import com.puzzlebench.yelp_aac.presentation.adapter.BusinessAdapter
 import com.puzzlebench.yelp_aac.presentation.di.ViewModelInjector
-import com.puzzlebench.yelp_aac.presentation.android.YelpApplication
-import com.puzzlebench.yelp_aac.presentation.viewmodel.ListBusinessesViewModel
+import com.puzzlebench.yelp_aac.presentation.YelpApplication
 import kotlinx.android.synthetic.main.list_business_fragment.*
-import org.jetbrains.anko.toast
 
 class ListBusinessesFragment : Fragment() {
 
@@ -40,7 +37,8 @@ class ListBusinessesFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = ListBusinessFragmentBinding.inflate(inflater, container, false)
-        val businessAdapter = BusinessAdapter()
+        val businessAdapter =
+            BusinessAdapter()
         binding.businessListRv.apply {
             adapter = businessAdapter
         }

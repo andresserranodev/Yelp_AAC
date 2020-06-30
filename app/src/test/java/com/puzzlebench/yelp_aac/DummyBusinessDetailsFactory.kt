@@ -1,11 +1,10 @@
 package com.puzzlebench.yelp_aac
 
-import com.puzzlebench.yelp_aac.data.local.room.entity.BusinessEntity
 import com.puzzlebench.yelp_aac.data.local.room.entity.CategoriesEntity
 import com.puzzlebench.yelp_aac.data.local.room.entity.PhotoEntity
 import com.puzzlebench.yelp_aac.data.remote.retrofit.BusinessDetailResponse
 import com.puzzlebench.yelp_aac.data.remote.retrofit.CategoriesResponse
-import com.puzzlebench.yelp_aac.presentation.model.BusinessDetails
+import com.puzzlebench.yelp_aac.presentation.details.BusinessDetails
 import com.puzzlebench.yelp_aac.repository.model.BusinessDetailsState
 
 object DummyBusinessDetailsFactory {
@@ -53,7 +52,12 @@ object DummyBusinessDetailsFactory {
         "$URL_PHOTO$it"
     }
 
-    fun getDummyBusinessDetails() = BusinessDetails("", listOf(), listOf())
+    fun getDummyBusinessDetails() =
+        BusinessDetails(
+            "",
+            listOf(),
+            listOf()
+        )
 
     fun getBusinessDetailsNoError() = BusinessDetailsState(getDummyBusinessDetails())
 

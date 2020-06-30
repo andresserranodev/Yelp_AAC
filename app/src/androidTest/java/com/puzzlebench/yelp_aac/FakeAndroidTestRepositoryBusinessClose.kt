@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.puzzlebench.yelp_aac.DummyBusinessFactoryAndroid.getDummyBusinessResponseIsClose
 import com.puzzlebench.yelp_aac.DummyBusinessFactoryAndroid.getDyummyBusinessDetailsState
-import com.puzzlebench.yelp_aac.presentation.model.Business
+import com.puzzlebench.yelp_aac.presentation.list.Business
 import com.puzzlebench.yelp_aac.repository.BusinessDetailsRepository
 import com.puzzlebench.yelp_aac.repository.model.BusinessDetailsState
 import kotlinx.coroutines.runBlocking

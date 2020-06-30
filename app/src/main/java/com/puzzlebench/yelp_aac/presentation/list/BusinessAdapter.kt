@@ -1,4 +1,4 @@
-package com.puzzlebench.yelp_aac.presentation.adapter
+package com.puzzlebench.yelp_aac.presentation.list
 
 import android.view.LayoutInflater
 import android.view.View
@@ -8,8 +8,6 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.puzzlebench.yelp_aac.databinding.ListBusinessItemBinding
-import com.puzzlebench.yelp_aac.presentation.fragment.ListBusinessesFragmentDirections
-import com.puzzlebench.yelp_aac.presentation.model.Business
 
 class BusinessAdapter : ListAdapter<Business, RecyclerView.ViewHolder>(BusinessDiffCallback()) {
 

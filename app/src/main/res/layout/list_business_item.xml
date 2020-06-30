@@ -12,7 +12,7 @@
 
         <variable
             name="business"
-            type="com.puzzlebench.yelp_aac.presentation.model.Business" />
+            type="com.puzzlebench.yelp_aac.presentation.list.Business" />
     </data>
 
     <androidx.cardview.widget.CardView

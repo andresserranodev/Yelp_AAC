@@ -5,6 +5,7 @@ import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.verify
 import com.puzzlebench.yelp_aac.DummyBusinessDetailsFactory.getBusinessDetailsNoError
+import com.puzzlebench.yelp_aac.presentation.details.DetailsBusinessViewModel
 import com.puzzlebench.yelp_aac.repository.BusinessDetailsRepository
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.runBlocking
@@ -31,7 +32,11 @@ class DetailsBusinessViewModelTest {
 
     @Before
     fun setUp() {
-        detailsBusinessViewModel = DetailsBusinessViewModel(businessDetailsRepository, businessId)
+        detailsBusinessViewModel =
+            DetailsBusinessViewModel(
+                businessDetailsRepository,
+                businessId
+            )
     }
 
     @Test

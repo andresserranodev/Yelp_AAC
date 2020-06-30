@@ -1,9 +1,7 @@
 package com.puzzlebench.yelp_aac
 
-import com.puzzlebench.yelp_aac.data.remote.retrofit.BusinessResponse
-import com.puzzlebench.yelp_aac.data.remote.retrofit.Location
-import com.puzzlebench.yelp_aac.presentation.model.Business
-import com.puzzlebench.yelp_aac.presentation.model.BusinessDetails
+import com.puzzlebench.yelp_aac.presentation.list.Business
+import com.puzzlebench.yelp_aac.presentation.details.BusinessDetails
 import com.puzzlebench.yelp_aac.repository.model.BusinessDetailsState
 
 object DummyBusinessFactoryAndroid {
@@ -15,36 +13,39 @@ object DummyBusinessFactoryAndroid {
     const val PRICE = "$$$"
 
 
-    fun getDummyBusinessResponseIsClose(seed: String) = Business(
-        "$BUSINESS_ID$seed",
-        "$BASE_NAME$seed",
-        "$IMAGE_URL$seed",
-        "$DISPLAY_PHONE$seed",
-        "$DISPLAY_ADDRESS$seed",
-        true,
-        4.5F,
-        PRICE
-    )
+    fun getDummyBusinessResponseIsClose(seed: String) =
+        Business(
+            "$BUSINESS_ID$seed",
+            "$BASE_NAME$seed",
+            "$IMAGE_URL$seed",
+            "$DISPLAY_PHONE$seed",
+            "$DISPLAY_ADDRESS$seed",
+            true,
+            4.5F,
+            PRICE
+        )
 
-    fun getDummyBusinessResponseIsOpen(seed: String) = Business(
-        "$BUSINESS_ID$seed",
-        "$BASE_NAME$seed",
-        "$IMAGE_URL$seed",
-        "$DISPLAY_PHONE$seed",
-        "$DISPLAY_ADDRESS$seed",
-        false,
-        4.5F,
-        PRICE
-    )
+    fun getDummyBusinessResponseIsOpen(seed: String) =
+        Business(
+            "$BUSINESS_ID$seed",
+            "$BASE_NAME$seed",
+            "$IMAGE_URL$seed",
+            "$DISPLAY_PHONE$seed",
+            "$DISPLAY_ADDRESS$seed",
+            false,
+            4.5F,
+            PRICE
+        )
 
 
     fun getDyummyBusinessDetailsState() = BusinessDetailsState(
         getDummyBusinessDetails()
     )
 
-    private fun getDummyBusinessDetails() = BusinessDetails(
-        "1",
-        listOf(),
-        listOf()
-    )
+    private fun getDummyBusinessDetails() =
+        BusinessDetails(
+            "1",
+            listOf(),
+            listOf()
+        )
 }

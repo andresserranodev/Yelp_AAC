@@ -10,11 +10,11 @@
 
         <variable
             name="business"
-            type="com.puzzlebench.yelp_aac.presentation.model.BusinessDetails" />
+            type="com.puzzlebench.yelp_aac.presentation.details.BusinessDetails" />
 
         <variable
             name="viewModel"
-            type="com.puzzlebench.yelp_aac.presentation.viewmodel.DetailsBusinessViewModel" />
+            type="com.puzzlebench.yelp_aac.presentation.details.DetailsBusinessViewModel" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout

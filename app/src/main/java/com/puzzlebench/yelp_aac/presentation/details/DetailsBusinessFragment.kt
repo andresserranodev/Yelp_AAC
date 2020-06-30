@@ -1,4 +1,4 @@
-package com.puzzlebench.yelp_aac.presentation.fragment
+package com.puzzlebench.yelp_aac.presentation.details
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -13,11 +13,8 @@ import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.snackbar.Snackbar
 import com.puzzlebench.yelp_aac.R
 import com.puzzlebench.yelp_aac.databinding.DetailsBusinessFragmentBinding
-import com.puzzlebench.yelp_aac.presentation.adapter.CategoriesAdapter
-import com.puzzlebench.yelp_aac.presentation.adapter.PhotosAdapter
 import com.puzzlebench.yelp_aac.presentation.di.ViewModelInjector
-import com.puzzlebench.yelp_aac.presentation.android.YelpApplication
-import com.puzzlebench.yelp_aac.presentation.viewmodel.DetailsBusinessViewModel
+import com.puzzlebench.yelp_aac.presentation.YelpApplication
 import kotlinx.android.synthetic.main.details_business_fragment.*
 
 class DetailsBusinessFragment : Fragment() {
@@ -42,11 +39,13 @@ class DetailsBusinessFragment : Fragment() {
             viewModel = detailsBusinessViewModel
             lifecycleOwner = viewLifecycleOwner
         }
-        val categoriesAdapter = CategoriesAdapter()
+        val categoriesAdapter =
+            CategoriesAdapter()
         binding.rvCategories.apply {
             adapter = categoriesAdapter
         }
-        val photosAdapter = PhotosAdapter()
+        val photosAdapter =
+            PhotosAdapter()
         binding.rvPhotos.apply {
             adapter = photosAdapter
         }
