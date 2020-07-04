@@ -26,39 +26,13 @@ class ListBusinessesFragment : Fragment() {
 
     private lateinit var binding: ListBusinessFragmentBinding
     private val viewModel: ListBusinessesViewModel by viewModels {
+        val app = (requireContext().applicationContext as YelpApplication)
         ViewModelInjector.provideListBusinessViewModelFactory(
-            (requireContext().applicationContext as YelpApplication).businessRepository
+            app.provideFetchBusinessCallback,
+            app.provideBusinessDao
         )
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        viewModel.getBusiness()
-    }
-
-    private fun initializedPagedListBuilder(config: PagedList.Config):
-            LivePagedListBuilder<Int, BusinessEntity> {
-
-        return LivePagedListBuilder(
-            (requireContext().applicationContext as YelpApplication).provideBusinessDao.getBusinessPager(),
-            config
-        ).setBoundaryCallback((requireContext().applicationContext as YelpApplication).provideFetchBusinessCallback)
-    }
-
-    private fun onViewState(
-        businessViewState: BusinessViewState,
-        businessAdapter: BusinessAdapter
-    ) {
-        when (businessViewState) {
-            is BusinessViewState.ShowBusiness -> {
-                //businessAdapter.submitList(businessViewState.business)
-                progressBar.visibility = View.GONE
-            }
-            is BusinessViewState.ShowErrorMessage -> {
-                displayErrorMessage(businessViewState.message)
-            }
-        }
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -66,44 +40,19 @@ class ListBusinessesFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = ListBusinessFragmentBinding.inflate(inflater, container, false)
-        val businessAdapter = BusinessAdapter()
         val businessAdapterPager = BusinessAdapterPager()
 
         binding.businessListRv.apply {
             adapter = businessAdapterPager
         }
-        //1
-        val config = PagedList.Config.Builder()
-            .setPageSize(6)
-            .setEnablePlaceholders(false)
-            .build()
 
-        //2
-        val liveData = initializedPagedListBuilder(config).build()
+        viewModel.liveData.observe(
+            viewLifecycleOwner,
+            Observer<PagedList<BusinessEntity>> { pagedList ->
+                businessAdapterPager.submitList(pagedList)
+                progressBar.visibility = View.GONE
 
-        //3
-        liveData.observe(viewLifecycleOwner, Observer<PagedList<BusinessEntity>> { pagedList ->
-            businessAdapterPager.submitList(pagedList)
-            progressBar.visibility = View.GONE
-
-        })
-        viewModel.businessState.observe(viewLifecycleOwner) {
-            onViewState(it, businessAdapter)
-        }
+            })
         return binding.root
-    }
-
-    private fun displayErrorMessage(error: String) {
-
-        activity?.let {
-            Snackbar.make(
-                it.findViewById(android.R.id.content),
-                getString(R.string.network_error, error),
-                Snackbar.LENGTH_INDEFINITE
-            )
-                .setAction(getString(R.string.retry)) {
-                    viewModel.getBusiness()
-                }.show()
-        }
     }
 }

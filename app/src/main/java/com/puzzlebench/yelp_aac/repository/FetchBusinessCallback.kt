@@ -12,6 +12,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.util.concurrent.Executors
+const val GET_BUSINESS_PAGED_LIMIT = 6
 
 class FetchBusinessCallback constructor(
     private val localDataBaseBusiness: LocalDataBaseBusiness,
@@ -25,7 +26,7 @@ class FetchBusinessCallback constructor(
     override fun onZeroItemsLoaded() {
         super.onZeroItemsLoaded()
         helper.runIfNotRunning(PagingRequestHelper.RequestType.INITIAL) { helperCallback ->
-            api.getBusiness().enqueue(object : Callback<YelpResponse> {
+            api.getBusiness(limit = GET_BUSINESS_PAGED_LIMIT).enqueue(object : Callback<YelpResponse> {
 
                 override fun onFailure(call: Call<YelpResponse>?, t: Throwable) {
                     //3
@@ -57,7 +58,9 @@ class FetchBusinessCallback constructor(
         super.onItemAtEndLoaded(itemAtEnd)
         helper.runIfNotRunning(PagingRequestHelper.RequestType.AFTER) { helperCallback ->
             executor.execute {
-                api.getBusiness(offset = localDataBaseBusiness.getBusinessSize())
+                api.getBusiness(
+                    limit = GET_BUSINESS_PAGED_LIMIT,
+                    offset = localDataBaseBusiness.getBusinessSize())
                     .enqueue(object : Callback<YelpResponse> {
 
                         override fun onFailure(call: Call<YelpResponse>?, t: Throwable) {

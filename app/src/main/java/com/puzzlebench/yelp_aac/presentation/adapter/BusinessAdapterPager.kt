@@ -1,18 +1,12 @@
 package com.puzzlebench.yelp_aac.presentation.adapter
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.Navigation
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.puzzlebench.yelp_aac.data.local.room.entity.BusinessEntity
-import com.puzzlebench.yelp_aac.databinding.ListBusinessItemBinding
 import com.puzzlebench.yelp_aac.databinding.ListBusinessItemPaggerBinding
-import com.puzzlebench.yelp_aac.presentation.fragment.ListBusinessesFragmentDirections
-import com.puzzlebench.yelp_aac.presentation.model.Business
 
 class BusinessAdapterPager :
     PagedListAdapter<BusinessEntity, RecyclerView.ViewHolder>(BusinessAdapterCallback()) {

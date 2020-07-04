@@ -26,7 +26,7 @@ android {
     buildTypes {
         debug {
             testCoverageEnabled true
-            buildConfigField "String", "API_KEY_VALUE", '"Bearer r37kmDrx_nmpeR46HeU6JZh0NeB66Vtblz8yY-7TMCbq9L8TfGGjSciWiM4cXLazT4pfXrGAZL_OwbkXvL1hadp-e0pJHbfJ7ReBQOko-WBVJxr2IfnFk25BRcHAXXYx"'
+            buildConfigField "String", "API_KEY_VALUE", '"your-private-apikey"'
             buildConfigField "String", "YELP_BASE_URL", '"https://api.yelp.com/"'
         }
         release {

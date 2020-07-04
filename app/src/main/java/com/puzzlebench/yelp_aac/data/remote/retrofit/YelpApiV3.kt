@@ -11,7 +11,7 @@ interface YelpApiV3 {
 
     @GET("v3/businesses/search?location=Switzerland")
     fun getBusiness(
-        @Query("limit") loadSize: Int = 6,
+        @Query("limit") limit: Int,
         @Query("offset") offset: Int? = null
     ): Call<YelpResponse>
 
