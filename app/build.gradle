@@ -98,6 +98,16 @@ dependencies {
     androidTestImplementation androidTestDependencies.espressoContrib
     androidTestImplementation generalTestDependencies.junit
     androidTestImplementation generalTestDependencies.coroutinesTest
+
+    def paging_version = "2.1.2"
+
+    implementation "androidx.paging:paging-runtime:$paging_version"
+    // For Kotlin use paging-runtime-ktx
+
+    // alternatively - without Android dependencies for testing
+    testImplementation "androidx.paging:paging-common:$paging_version"
+    // For Kotlin use paging-common-ktx
+
 }
 check.dependsOn ktlint
 

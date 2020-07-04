@@ -1,6 +1,7 @@
 package com.puzzlebench.yelp_aac.data.local.room.dao
 
 import androidx.lifecycle.LiveData
+import androidx.paging.DataSource
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
@@ -12,6 +13,9 @@ interface BusinessDao {
 
     @Query("SELECT * FROM BUSINESS_TABLE")
     suspend fun getBusiness(): List<BusinessEntity>
+
+    @Query("SELECT * FROM BUSINESS_TABLE")
+    fun getBusinessPager(): DataSource.Factory<Int, BusinessEntity>
 
     @Query("SELECT * from BUSINESS_TABLE WHERE businessId = :businessId")
     fun getBusinessById(businessId: String): LiveData<BusinessEntity>
