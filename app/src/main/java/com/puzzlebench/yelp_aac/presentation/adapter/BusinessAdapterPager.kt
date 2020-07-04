@@ -42,7 +42,6 @@ class BusinessAdapterPager :
                 executePendingBindings()
             }
         }
-
     }
 }
 

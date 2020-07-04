@@ -124,7 +124,7 @@ object ServiceLocator {
 
     fun provideFetchBusinessCallback(context: Context): FetchBusinessCallback {
         return FetchBusinessCallback(
-            provideBusinessLocalDataSource(context),
+            provideBusinessDao(context),
             provideYelpApiV3(),
             provideBusinessMapper()
         )

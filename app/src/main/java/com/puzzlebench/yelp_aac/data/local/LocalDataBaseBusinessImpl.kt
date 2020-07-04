@@ -31,12 +31,6 @@ class LocalDataBaseBusinessImpl internal constructor(
         businessDao.insertBusiness(mapper.transformRepositoryToEntity(business))
     }
 
-    override fun saveAll(business: List<Business>) {
-        businessDao.insert(mapper.transformRepositoryToEntity(business))
-    }
-
-    override fun getBusinessSize(): Int = businessDao.getAllBusiness().size
-
     override suspend fun deleteAll() {
         businessDao.deleteAllBusiness()
     }
