@@ -26,7 +26,7 @@ android {
     buildTypes {
         debug {
             testCoverageEnabled true
-            buildConfigField "String", "API_KEY_VALUE", '"your-private-apikey"'
+            buildConfigField "String", "API_KEY_VALUE", '"Bearer r37kmDrx_nmpeR46HeU6JZh0NeB66Vtblz8yY-7TMCbq9L8TfGGjSciWiM4cXLazT4pfXrGAZL_OwbkXvL1hadp-e0pJHbfJ7ReBQOko-WBVJxr2IfnFk25BRcHAXXYx"'
             buildConfigField "String", "YELP_BASE_URL", '"https://api.yelp.com/"'
         }
         release {
@@ -99,6 +99,10 @@ dependencies {
     androidTestImplementation generalTestDependencies.junit
     androidTestImplementation generalTestDependencies.coroutinesTest
 
+    implementation 'com.facebook.stetho:stetho:1.5.1'
+    implementation 'com.facebook.stetho:stetho-okhttp3:1.5.1'
+
+
     def paging_version = "2.1.2"
 
     implementation "androidx.paging:paging-runtime:$paging_version"
@@ -106,7 +110,6 @@ dependencies {
 
     // alternatively - without Android dependencies for testing
     testImplementation "androidx.paging:paging-common:$paging_version"
-    // For Kotlin use paging-common-ktx
 
 }
 check.dependsOn ktlint

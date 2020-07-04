@@ -41,7 +41,8 @@ class ListBusinessesFragment : Fragment() {
 
         return LivePagedListBuilder(
             (requireContext().applicationContext as YelpApplication).provideBusinessDao.getBusinessPager(),
-            config)
+            config
+        ).setBoundaryCallback((requireContext().applicationContext as YelpApplication).provideFetchBusinessCallback)
     }
 
     private fun onViewState(
@@ -73,7 +74,7 @@ class ListBusinessesFragment : Fragment() {
         }
         //1
         val config = PagedList.Config.Builder()
-            .setPageSize(40)
+            .setPageSize(6)
             .setEnablePlaceholders(false)
             .build()
 
@@ -83,6 +84,8 @@ class ListBusinessesFragment : Fragment() {
         //3
         liveData.observe(viewLifecycleOwner, Observer<PagedList<BusinessEntity>> { pagedList ->
             businessAdapterPager.submitList(pagedList)
+            progressBar.visibility = View.GONE
+
         })
         viewModel.businessState.observe(viewLifecycleOwner) {
             onViewState(it, businessAdapter)

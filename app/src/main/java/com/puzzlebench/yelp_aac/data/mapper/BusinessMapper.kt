@@ -18,6 +18,10 @@ class BusinessMapper : BaseMapperData<BusinessResponse, Business, BusinessEntity
             repository.price
         )
 
+    fun transformRepositoryToEntity(repository: List<Business>) = repository.map {
+        transformRepositoryToEntity(it)
+    }
+
     override fun transformEntityToRepository(entity: BusinessEntity) =
         Business(
             entity.businessId,

@@ -16,6 +16,7 @@ class ListBusinessesViewModel internal constructor(private val businessRepositor
         get() = businessMutable
 
     fun getBusiness() {
+        /*
         viewModelScope.launch {
             val businessData = businessRepository.getBusiness()
             if (businessData.error.isEmpty()) {
@@ -23,6 +24,6 @@ class ListBusinessesViewModel internal constructor(private val businessRepositor
             } else {
                 businessMutable.value = BusinessViewState.ShowErrorMessage(businessData.error)
             }
-        }
+        }*/
     }
 }

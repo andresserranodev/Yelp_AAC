@@ -23,6 +23,12 @@ interface BusinessDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertBusiness(business: BusinessEntity)
 
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insert(business: List<BusinessEntity>)
+
+    @Query("SELECT * FROM BUSINESS_TABLE")
+    fun getAllBusiness(): List<BusinessEntity>
+
     @Query("DELETE FROM BUSINESS_TABLE")
     suspend fun deleteAllBusiness()
 }
