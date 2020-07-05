@@ -2,6 +2,7 @@ package com.puzzlebench.yelp_aac.presentation.android
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import com.puzzlebench.yelp_aac.R
 
 class MainActivity : AppCompatActivity() {
