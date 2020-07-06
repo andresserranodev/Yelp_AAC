@@ -15,6 +15,13 @@
             app:enterAnim="@anim/fragment_open_enter"
             app:exitAnim="@anim/fragment_open_exit"
             app:popExitAnim="@anim/fragment_close_exit" />
+
+        <action
+            android:id="@+id/settings_dest"
+            app:destination="@id/settingsFragment"
+            app:enterAnim="@anim/fragment_open_enter"
+            app:exitAnim="@anim/fragment_open_exit"
+            app:popExitAnim="@anim/fragment_close_exit" />
     </fragment>
     <fragment
         android:id="@+id/detailsBusinessFragment"
@@ -25,4 +32,8 @@
             android:name="businessId"
             app:argType="string" />
     </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.puzzlebench.yelp_aac.presentation.fragment.SettingsFragment"
+        android:label="SettingsFragment" />
 </navigation>
