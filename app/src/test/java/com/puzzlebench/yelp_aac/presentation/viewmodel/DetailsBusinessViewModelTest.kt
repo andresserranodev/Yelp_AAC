@@ -4,6 +4,7 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.verify
+import com.puzzlebench.yelp_aac.DummyBusinessDetailsFactory.getBusinessDetailsDataError
 import com.puzzlebench.yelp_aac.DummyBusinessDetailsFactory.getBusinessDetailsNoError
 import com.puzzlebench.yelp_aac.repository.BusinessDetailsRepository
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -17,6 +18,7 @@ class DetailsBusinessViewModelTest {
 
     @get:Rule
     var rule: TestRule = InstantTaskExecutorRule()
+
     @ExperimentalCoroutinesApi
     @get:Rule
     var coroutinesTestRule: CoroutinesTestRule = CoroutinesTestRule()
@@ -39,6 +41,20 @@ class DetailsBusinessViewModelTest {
         detailsBusinessViewModel.getBusinessDetails()
         runBlocking {
             verify(businessDetailsRepository).getBusinessDetailsById(businessId)
+        }
+    }
+
+    @Test
+    fun getBusinessDetailsError() {
+        val businessDetailsErrorRepository = mock<BusinessDetailsRepository> {
+            onBlocking { getBusinessDetailsById(businessId) } doReturn getBusinessDetailsDataError()
+        }
+        detailsBusinessViewModel =
+            DetailsBusinessViewModel(businessDetailsErrorRepository, businessId)
+
+        detailsBusinessViewModel.getBusinessDetails()
+        runBlocking {
+            verify(businessDetailsErrorRepository).getBusinessDetailsById(businessId)
         }
     }
 }
