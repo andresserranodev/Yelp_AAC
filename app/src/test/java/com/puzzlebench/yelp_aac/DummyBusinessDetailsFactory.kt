@@ -54,4 +54,5 @@ object DummyBusinessDetailsFactory {
     fun getDummyBusinessDetails() = BusinessDetails("", listOf(), listOf())
 
     fun getBusinessDetailsNoError() = BusinessDetailsState(getDummyBusinessDetails())
+    fun getBusinessDetailsDataError() = BusinessDetailsState(getDummyBusinessDetails(), "Error")
 }
