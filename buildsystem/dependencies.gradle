@@ -19,6 +19,8 @@ ext {
     ktx_version = '1.1.0'
     glide_version = '4.9.0'
     androidMaterial_version = '1.2.0-alpha01'
+    preference_version = '1.1.1'
+
 
 
     //general dependencies
@@ -54,7 +56,9 @@ ext {
             navigationFragmentKtx: "androidx.navigation:navigation-fragment-ktx:${navigation_version}",
             navigationUiKtx      : "androidx.navigation:navigation-ui-ktx:${navigation_version}",
             glide                : "com.github.bumptech.glide:glide:${glide_version}",
-            androidMaterial      : "com.google.android.material:material:${androidMaterial_version}"
+            androidMaterial      : "com.google.android.material:material:${androidMaterial_version}",
+            preferenceAndroidx   : "androidx.preference:preference:${preference_version}"
+
 
     ]
 

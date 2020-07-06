@@ -11,4 +11,17 @@
     <string name="business_is_open">Open</string>
     <string name="network_error">Network error! Details: %s</string>
     <string name="retry">Retry?</string>
+
+    <!-- Preferences -->
+    <string name="preference_theme_title">Theme</string>
+    <string name="light_theme_name">Apply Light theme</string>
+    <string name="dark_theme_name">Apply Dark theme</string>
+    <string name="auto_battery_name">Apply Auto battery</string>
+    <string name="follow_system_name">Apply Follow system</string>
+    <string name="preference_key_theme" translatable="false">preference_key_theme</string>
+    <string name="light_theme_value" translatable="false">Light</string>
+    <string name="dark_theme_value" translatable="false">Dark</string>
+    <string name="auto_battery_value" translatable="false">Auto-battery</string>
+    <string name="follow_system_value" translatable="false">System</string>
+
 </resources>

@@ -57,6 +57,8 @@ dependencies {
     implementation presentationDependencies.viewmodelKtx
     implementation presentationDependencies.glide
     implementation presentationDependencies.androidMaterial
+    implementation presentationDependencies.preferenceAndroidx
+
 
     def generalDependencies = rootProject.ext.generalDependencies
     implementation generalDependencies.coreKtx
@@ -78,6 +80,7 @@ dependencies {
     kapt "androidx.room:room-compiler:$rootProject.roomVersion"
     implementation dataDependencies.roomRuntime
     implementation dataDependencies.runtimeKtx
+
 
     def generalTestDependencies = rootProject.ext.generalTestDependencies
     testImplementation generalTestDependencies.mockito,
