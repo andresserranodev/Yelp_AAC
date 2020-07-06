@@ -67,7 +67,7 @@ Raywenderlich:z
 * [Android Architecture Components: Getting Started](https://www.raywenderlich.com/164-android-architecture-components-getting-started)
 * [android architecture components livedata](https://www.raywenderlich.com/4980-android-architecture-components-livedata)
 * [android architecture components viewmodel](https://www.raywenderlich.com/5046-android-architecture-components-viewmodel)
-* [Dark Theme](https://www.raywenderlich.com/5697228-supporting-dark-theme)
+* [Supporting Dark Theme](https://www.raywenderlich.com/5697228-supporting-dark-theme)
 
 
 Others:
