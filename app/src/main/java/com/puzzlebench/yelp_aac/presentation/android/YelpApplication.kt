@@ -7,7 +7,6 @@ import android.graphics.Color
 import android.os.Build
 import android.os.SystemClock
 import androidx.core.app.AlarmManagerCompat
-import androidx.core.content.ContextCompat
 import androidx.preference.PreferenceManager
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
@@ -39,7 +38,7 @@ class YelpApplication : Application() {
         ThemeManager.applyTheme(preferences.getString("preference_key_theme", "")!!)
     }
 
-    private fun initSyncAlarm(){
+    private fun initSyncAlarm() {
         createChannel()
         val dailyWorkRequest = OneTimeWorkRequestBuilder<UpdateSeedDataBaseWorker>()
             .setInitialDelay(12, TimeUnit.HOURS)
@@ -85,7 +84,6 @@ class YelpApplication : Application() {
                 NotificationManager::class.java
             )
             notificationManager.createNotificationChannel(notificationChannel)
-
         }
     }
 }

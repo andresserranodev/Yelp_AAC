@@ -15,6 +15,6 @@ class UpdateSeedDataBaseWorker(context: Context, workerParameters: WorkerParamet
         ) as NotificationManager
 
         notificationManager.sendNotification(applicationContext)
-       return Result.success()
+        return Result.success()
     }
 }
