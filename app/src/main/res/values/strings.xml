@@ -24,4 +24,9 @@
     <string name="auto_battery_value" translatable="false">Auto-battery</string>
     <string name="follow_system_value" translatable="false">System</string>
 
+    <!-- Notification -->
+    <string name="syc_notification_channel_id" translatable="false">syc_channel</string>
+    <string name="syc_notification_channel_name" translatable="true">Syc</string>
+    <string name="notification_title">Updating…</string>
+    <string name="notification_content">we are updating the list of bushiness</string>
 </resources>
