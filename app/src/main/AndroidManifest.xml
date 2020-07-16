@@ -3,6 +3,7 @@
     package="com.puzzlebench.yelp_aac">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
 
     <application
         android:name=".presentation.android.YelpApplication"
@@ -21,9 +22,15 @@
             </intent-filter>
         </activity>
         <receiver
-            android:name=".presentation.android.AlarmReceiver"
+            android:name=".presentation.android.receiver.AlarmReceiver"
             android:enabled="true"
             android:exported="false">
+        </receiver>
+        <receiver android:name=".presentation.android.receiver.BootReceiver"
+            android:enabled="false">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
         </receiver>
     </application>
 
