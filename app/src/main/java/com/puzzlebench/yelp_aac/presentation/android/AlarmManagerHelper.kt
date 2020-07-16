@@ -13,8 +13,9 @@ import com.puzzlebench.yelp_aac.presentation.android.receiver.AlarmReceiver
 import java.util.*
 
 const val REQUEST_CODE = 0
-class AlarmManagerHelper(private val  context: Context) {
-     fun initSyncAlarm() {
+
+class AlarmManagerHelper(private val context: Context) {
+    fun initSyncAlarm() {
         createChannel()
         val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
         val notifyIntent = Intent(context, AlarmReceiver::class.java)
@@ -23,7 +24,6 @@ class AlarmManagerHelper(private val  context: Context) {
             set(Calendar.HOUR_OF_DAY, 8)
             set(Calendar.MINUTE, 10)
             set(Calendar.SECOND, 0)
-
         }
         val notifyPendingIntent = PendingIntent.getBroadcast(
             context,
@@ -62,7 +62,8 @@ class AlarmManagerHelper(private val  context: Context) {
             notificationChannel.enableLights(true)
             notificationChannel.lightColor = Color.RED
             notificationChannel.enableVibration(true)
-            notificationChannel.description = context.getString(R.string.syc_notification_channel_id)
+            notificationChannel.description =
+                context.getString(R.string.syc_notification_channel_id)
 
             val notificationManager = context.getSystemService(
                 NotificationManager::class.java
