@@ -14,10 +14,7 @@ import com.puzzlebench.yelp_aac.data.remote.RemoteFetchBusinessDetailsByIdImpl
 import com.puzzlebench.yelp_aac.data.remote.RemoteFetchSwitzerlandBusinesses
 import com.puzzlebench.yelp_aac.data.remote.RemoteFetchSwitzerlandBusinessesImpl
 import com.puzzlebench.yelp_aac.data.remote.retrofit.RetrofitClient
-import com.puzzlebench.yelp_aac.repository.BusinessDetailsRepository
-import com.puzzlebench.yelp_aac.repository.BusinessDetailsRepositoryImpl
-import com.puzzlebench.yelp_aac.repository.BusinessRepository
-import com.puzzlebench.yelp_aac.repository.BusinessRepositoryImpl
+import com.puzzlebench.yelp_aac.repository.*
 
 object ServiceLocator {
 
@@ -25,6 +22,10 @@ object ServiceLocator {
 
     @Volatile
     var businessRepository: BusinessRepository? = null
+        @VisibleForTesting set
+
+    @Volatile
+    var dbusinessDetailsRepository: BusinessDetailsRepository? = null
         @VisibleForTesting set
 
     fun provideBusinessRepository(context: Context): BusinessRepository {
@@ -35,10 +36,6 @@ object ServiceLocator {
                 )
         }
     }
-
-    @Volatile
-    var dbusinessDetailsRepository: BusinessDetailsRepository? = null
-        @VisibleForTesting set
 
     fun provideBusinessDetailsRepository(context: Context): BusinessDetailsRepository {
         synchronized(this) {
@@ -105,6 +102,13 @@ object ServiceLocator {
         return businessDetailsRepositoryImpl
     }
 
+    private fun createUpdateRepository(context: Context): UpdateRepository =
+        UpdateRepositoryImpl(
+            provideRemoteFetchSwitzerlandBusinesses(),
+            provideBusinessLocalDataSource(context),
+            provideLocalDataBaseBusinessDetail(context)
+        )
+
     private fun createDataBase(context: Context): YelpDataBase {
         val result = Room.databaseBuilder(
             context.applicationContext,
@@ -117,4 +121,8 @@ object ServiceLocator {
     private fun provideYelpApiV3() = RetrofitClient.makeServiceYelpApiV3()
     private fun provideBusinessMapper() = BusinessMapper()
     private fun provideBusinessDetailMapper() = BusinessDetailMapper()
+
+    fun provideUpdateRepository(context: Context): UpdateRepository {
+        return createUpdateRepository(context)
+    }
 }

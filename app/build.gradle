@@ -81,6 +81,10 @@ dependencies {
     implementation dataDependencies.roomRuntime
     implementation dataDependencies.runtimeKtx
 
+    implementation 'com.facebook.stetho:stetho:1.5.1'
+    implementation 'com.facebook.stetho:stetho-okhttp3:1.5.1'
+
+
 
     def generalTestDependencies = rootProject.ext.generalTestDependencies
     testImplementation generalTestDependencies.mockito,
