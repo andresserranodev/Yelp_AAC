@@ -1,14 +1,14 @@
 package com.puzzlebench.yelp_aac.presentation.android
 
-import android.app.*
+import android.app.Application
 import androidx.preference.PreferenceManager
 import com.facebook.stetho.Stetho
+import com.puzzlebench.yelp_aac.BuildConfig
 import com.puzzlebench.yelp_aac.presentation.di.ServiceLocator
 import com.puzzlebench.yelp_aac.presentation.utils.ThemeManager
 import com.puzzlebench.yelp_aac.repository.BusinessDetailsRepository
 import com.puzzlebench.yelp_aac.repository.BusinessRepository
 import com.puzzlebench.yelp_aac.repository.UpdateRepository
-import java.util.*
 
 class YelpApplication : Application() {
     // TODO this can be improvement this using Dagger2 whit the Scopes
@@ -23,7 +23,9 @@ class YelpApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        Stetho.initializeWithDefaults(this)
+        if (BuildConfig.DEBUG){
+            Stetho.initializeWithDefaults(this)
+        }
         initSyncAlarm()
         initTheme()
     }
