@@ -8,7 +8,6 @@ import com.puzzlebench.yelp_aac.data.local.LocalDataBaseBusiness
 import com.puzzlebench.yelp_aac.data.local.LocalDataBaseBusinessDetail
 import com.puzzlebench.yelp_aac.data.remote.RemoteFetchSwitzerlandBusinesses
 import kotlinx.coroutines.runBlocking
-import org.junit.After
 import org.junit.Before
 import org.junit.Test
 
