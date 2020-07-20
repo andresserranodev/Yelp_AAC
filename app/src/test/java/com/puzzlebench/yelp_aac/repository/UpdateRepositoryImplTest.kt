@@ -16,9 +16,10 @@ import org.junit.Assert.*
 class UpdateRepositoryImplTest {
 
     private lateinit var updateRepository: UpdateRepository
+    private val serviceResponse = DummyBusinessFactory.getBussinesStateNoError()
 
     private val mockFetchSwitzerlandBusinesses = mock<RemoteFetchSwitzerlandBusinesses> {
-        onBlocking { fetchSwitzerlandBusiness() } doReturn DummyBusinessFactory.getBussinesStateNoError()
+        onBlocking { fetchSwitzerlandBusiness() } doReturn serviceResponse
     }
     private val mockBusinessLocalData = mock<LocalDataBaseBusiness>()
     private val localDataBaseBusinessDetail = mock<LocalDataBaseBusinessDetail>()
@@ -39,6 +40,9 @@ class UpdateRepositoryImplTest {
             verify(mockFetchSwitzerlandBusinesses).fetchSwitzerlandBusiness()
             verify(mockBusinessLocalData).deleteAll()
             verify(localDataBaseBusinessDetail).deleteAllBusinessDetails()
+            serviceResponse.businesses.forEach {
+                verify(mockBusinessLocalData).saveBusiness(it)
+            }
         }
     }
 }
