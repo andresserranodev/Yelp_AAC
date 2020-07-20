@@ -1,5 +1,6 @@
 package com.puzzlebench.yelp_aac.data.remote.retrofit
 
+import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.puzzlebench.yelp_aac.BuildConfig
 import okhttp3.OkHttpClient
@@ -21,7 +22,7 @@ class RetrofitClient {
                     ).build()
                 val requestBuilder = defaultRequest.newBuilder().headers(headers)
                 chain.proceed(requestBuilder.build())
-            }
+            }.addNetworkInterceptor(StethoInterceptor())
         }
 
         fun makeServiceYelpApiV3(): YelpApiV3 {

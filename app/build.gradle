@@ -81,6 +81,10 @@ dependencies {
     implementation dataDependencies.roomRuntime
     implementation dataDependencies.runtimeKtx
 
+    // Dependencies for Android debugging
+    def developmentDependencies = rootProject.ext.developmentDependencies
+    implementation developmentDependencies.stetho
+    implementation developmentDependencies.stethoOkHttp
 
     def generalTestDependencies = rootProject.ext.generalTestDependencies
     testImplementation generalTestDependencies.mockito,

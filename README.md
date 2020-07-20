@@ -51,7 +51,9 @@ presentation: This module has all android framework using MVVM
 Udacity:
 * [Build your First app Lesson 10 (Designing for Everyone 27.Add Dark Mode Support)](https://classroom.udacity.com/courses/ud9012/lessons/d6418953-69fb-41ab-acc4-aafc681ccf41/concepts/d83cd0af-5688-4848-9f15-2f6628c634f6)
 * [Build your First app Lesson 7 (RecyclerView 11.Improving Data Refresh)](https://classroom.udacity.com/courses/ud9012/lessons/ee5a525f-0ba3-4d25-ba29-1fa1d6c567b8/concepts/7047e569-b5a2-4767-a589-6fb4e8e367d4)
+* [Advanced Android with Kotlin Lesson 1. Using Notification](https://classroom.udacity.com/courses/ud940/lessons/66466df1-b797-4844-bcb6-658a1b986e3d/concepts/10708a67-9855-4634-a1f8-67011646d86c)
 * [Advanced Android with Kotlin](https://classroom.udacity.com/courses/ud940)
+
 
 
 Google Codelabs:
@@ -74,3 +76,5 @@ Others:
 * [How to configure JaCoCo for Kotlin & Java project](http://vgaidarji.me/blog/2017/12/20/how-to-configure-jacoco-for-kotlin-and-java-project/)
 * [Android, ktlint, and pre-commit Git Hook](https://medium.com/@alistair.cerio/android-ktlint-and-pre-commit-git-hook-5dd606e230a9)
 * [Mocking Coroutines](https://proandroiddev.com/mocking-coroutines-7024073a8c09)
+* [Schedule Alarms](https://developer.android.com/training/scheduling/alarms)
+
