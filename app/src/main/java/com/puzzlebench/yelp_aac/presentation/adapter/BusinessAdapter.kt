@@ -3,6 +3,7 @@ package com.puzzlebench.yelp_aac.presentation.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -31,9 +32,10 @@ class BusinessAdapter : ListAdapter<Business, RecyclerView.ViewHolder>(BusinessD
         RecyclerView.ViewHolder(binding.root) {
         init {
             binding.setClickListener {
-                binding.business?.let { business ->
+                Toast.makeText(binding.root.context,"toast",Toast.LENGTH_LONG).show()
+                /**binding.business?.let { business ->
                     navigateBussinesDetails(business, it)
-                }
+                }**/
             }
         }
 
