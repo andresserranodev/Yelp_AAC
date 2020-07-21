@@ -56,4 +56,16 @@ class BusinessDetailsRepositoryImplTest {
             verify(businessLocalData).getBusinessDetailsByBusinessId(businessId)
         }
     }
+
+    @Test
+    fun `test no empty data get business`() {
+        val businessLocalData = mock<LocalDataBaseBusinessDetail>()
+        businessDetailsRepository =
+            BusinessDetailsRepositoryImpl(remoteFetchBusinessDetailsById, businessLocalData)
+
+        runBlocking {
+            businessDetailsRepository.getBusinessById(businessId)
+            verify(businessLocalData).getBusinessById(businessId)
+        }
+    }
 }
