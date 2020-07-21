@@ -8,8 +8,10 @@ import com.puzzlebench.yelp_aac.DummyBusinessFactory.getBussinesStateError
 import com.puzzlebench.yelp_aac.DummyBusinessFactory.getBussinesStateNoError
 import com.puzzlebench.yelp_aac.data.local.LocalDataBaseBusiness
 import com.puzzlebench.yelp_aac.data.remote.RemoteFetchSwitzerlandBusinesses
+import com.puzzlebench.yelp_aac.repository.model.NO_ERROR
 import kotlinx.coroutines.runBlocking
 import org.junit.Test
+import kotlin.test.assertEquals
 
 class BusinessRepositoryImplTest {
 
@@ -48,6 +50,7 @@ class BusinessRepositoryImplTest {
         runBlocking {
             businessRepositoryImpl.getBusiness()
             verify(businessLocalData).getBusiness()
+            assertEquals(businessRepositoryImpl.getBusiness().error, NO_ERROR)
         }
     }
 
@@ -67,6 +70,7 @@ class BusinessRepositoryImplTest {
             businessRepositoryImpl.getBusiness()
             verify(businessLocalData).getBusiness()
             verify(fetchSwitzerlandBusinesses).fetchSwitzerlandBusiness()
+            assertEquals(businessRepositoryImpl.getBusiness().error, "Error")
         }
     }
 }
