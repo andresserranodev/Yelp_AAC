@@ -1,65 +1,55 @@
 package com.puzzlebench.yelp_aac.presentation.fragment
 
-import android.view.View
-import android.view.ViewGroup
-import android.widget.TextView
-import androidx.cardview.widget.CardView
 import androidx.fragment.app.testing.launchFragmentInContainer
+import androidx.navigation.Navigation
+import androidx.navigation.testing.TestNavHostController
 import androidx.recyclerview.widget.RecyclerView
+import androidx.test.core.app.ApplicationProvider
 import androidx.test.espresso.Espresso.onView
-import androidx.test.espresso.UiController
-import androidx.test.espresso.ViewAction
-import androidx.test.espresso.action.ViewActions.click
-import androidx.test.espresso.contrib.RecyclerViewActions
 import androidx.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition
-import androidx.test.espresso.matcher.ViewMatchers.isAssignableFrom
-import androidx.test.espresso.matcher.ViewMatchers.withId
+import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.MediumTest
 import com.puzzlebench.yelp_aac.FakeAndroidTestRepositoryBusiness
+import com.puzzlebench.yelp_aac.FakeAndroidTestRepositoryBusinessOpen
 import com.puzzlebench.yelp_aac.R
 import com.puzzlebench.yelp_aac.presentation.di.ServiceLocator
+import com.puzzlebench.yelp_aac.repository.BusinessDetailsRepository
 import com.puzzlebench.yelp_aac.repository.BusinessRepository
+import com.puzzlebench.yelp_aac.utils.UtilsAction
+import junit.framework.Assert.assertEquals
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import org.hamcrest.CoreMatchers.allOf
-import org.hamcrest.Matcher
 import org.junit.Test
 import org.junit.runner.RunWith
-
 
 @MediumTest
 @ExperimentalCoroutinesApi
 @RunWith(AndroidJUnit4::class)
 class ListBusinessesFragmentTest {
-    private lateinit var repository: BusinessRepository
+    private lateinit var businessRepository: BusinessRepository
+    private lateinit var businessDetailsRepository: BusinessDetailsRepository
 
     @Test
-    fun activityFragmentLaunch() {
-        repository = FakeAndroidTestRepositoryBusiness()
-        ServiceLocator.businessRepository = repository
-        launchFragmentInContainer<ListBusinessesFragment>(null, R.style.AppTheme)
+    fun whenItemClickedThemNavigateToDetailsFragment() {
+        businessRepository = FakeAndroidTestRepositoryBusiness()
+        ServiceLocator.businessRepository = businessRepository
+        businessDetailsRepository = FakeAndroidTestRepositoryBusinessOpen()
+        ServiceLocator.businessDetailsRepository = businessDetailsRepository
+        // Create a TestNavHostController
+        val navController = TestNavHostController(
+            ApplicationProvider.getApplicationContext())
+        navController.setGraph(R.navigation.nav_graph)
+        // Create a graphical Fragment
+        val listBusinessesFragment = launchFragmentInContainer<ListBusinessesFragment>(null, R.style.AppTheme)
+        // Set the NavController property on the fragment
+        listBusinessesFragment.onFragment { fragment ->
+            Navigation.setViewNavController(fragment.requireView(), navController)
+        }
+
         onView(withId(R.id.business_list_rv))
             .perform(actionOnItemAtPosition<RecyclerView.ViewHolder>
-                (0,TypeChileAction.typeText(R.id.business_cv)))
-        Thread.sleep(500.toLong())
-    }
-}
+                (0, UtilsAction.performClickById(R.id.business_cv)))
 
-class TypeChileAction {
-    companion object{
-        fun typeText(chileId:Int): ViewAction{
-            return object :ViewAction{
-                override fun getDescription(): String=""
-
-                override fun getConstraints(): Matcher<View> {
-                    return  allOf(isAssignableFrom(ViewGroup::class.java))
-                }
-
-                override fun perform(uiController: UiController?, view: View?) {
-                    val v = view?.findViewById<ViewGroup>(chileId)
-                    v?.performClick()
-                }
-            }
-        }
+        assertEquals(navController.currentDestination?.label, "details_business_fragment")
     }
 }

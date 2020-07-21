@@ -27,7 +27,7 @@ class DetailsBusinessFragmentTest {
     @Test
     fun viewBusinessIsClose() {
         repository = FakeAndroidTestRepositoryBusinessClose()
-        ServiceLocator.dbusinessDetailsRepository = repository
+        ServiceLocator.businessDetailsRepository = repository
         val fragmentArgs = Bundle().apply {
             putString("businessId", "1")
         }
@@ -50,7 +50,7 @@ class DetailsBusinessFragmentTest {
     @Test
     fun viewBusinessIsOpen() {
         repository = FakeAndroidTestRepositoryBusinessOpen()
-        ServiceLocator.dbusinessDetailsRepository = repository
+        ServiceLocator.businessDetailsRepository = repository
         val fragmentArgs = Bundle().apply {
             putString("businessId", "1")
         }
