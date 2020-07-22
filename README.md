@@ -52,9 +52,8 @@ Udacity:
 * [Build your First app Lesson 10 (Designing for Everyone 27.Add Dark Mode Support)](https://classroom.udacity.com/courses/ud9012/lessons/d6418953-69fb-41ab-acc4-aafc681ccf41/concepts/d83cd0af-5688-4848-9f15-2f6628c634f6)
 * [Build your First app Lesson 7 (RecyclerView 11.Improving Data Refresh)](https://classroom.udacity.com/courses/ud9012/lessons/ee5a525f-0ba3-4d25-ba29-1fa1d6c567b8/concepts/7047e569-b5a2-4767-a589-6fb4e8e367d4)
 * [Advanced Android with Kotlin Lesson 1. Using Notification](https://classroom.udacity.com/courses/ud940/lessons/66466df1-b797-4844-bcb6-658a1b986e3d/concepts/10708a67-9855-4634-a1f8-67011646d86c)
+* [Advanced Android with Kotlin Lesson 7 Using Espresso to Test a Fragment ](https://classroom.udacity.com/courses/ud940/lessons/9434e029-dce7-4550-93f2-18a224433e72/concepts/9110996b-f881-4b5d-9c5b-a90094eac3c7)
 * [Advanced Android with Kotlin](https://classroom.udacity.com/courses/ud940)
-
-
 
 Google Codelabs:
 * [Kotlin Bootcamp Course](https://codelabs.developers.google.com/kotlin-bootcamp/)
@@ -62,9 +61,10 @@ Google Codelabs:
 * [Android Room with a View - Kotlin](https://codelabs.developers.google.com/codelabs/android-room-with-a-view-kotlin/index.html?index=..%2F..index#0)
 * [Using Kotlin Coroutines in your Android App](https://codelabs.developers.google.com/codelabs/kotlin-coroutines/index.html?index=..%2F..index#6)
 * [MotionLayout](https://codelabs.developers.google.com/codelabs/motion-layout/index.html?index=..%2F..index#8)
+* [Espresso for UI testing](https://codelabs.developers.google.com/codelabs/android-training-espresso-for-ui-testing/index.html#3)
 
 
-Raywenderlich:z
+Raywenderlich:
 * [Jetpack navigation controlle](https://www.raywenderlich.com/5365-jetpack-navigation-controller)
 * [Android Architecture Components: Getting Started](https://www.raywenderlich.com/164-android-architecture-components-getting-started)
 * [android architecture components livedata](https://www.raywenderlich.com/4980-android-architecture-components-livedata)
@@ -77,4 +77,6 @@ Others:
 * [Android, ktlint, and pre-commit Git Hook](https://medium.com/@alistair.cerio/android-ktlint-and-pre-commit-git-hook-5dd606e230a9)
 * [Mocking Coroutines](https://proandroiddev.com/mocking-coroutines-7024073a8c09)
 * [Schedule Alarms](https://developer.android.com/training/scheduling/alarms)
+* [Dealing with actions and checks on children of a RecyclerView’s item in Espresso tests](https://medium.com/@xabaras/dealing-with-actions-and-checks-on-children-of-a-recyclerviews-item-in-espresso-tests-dabd93361810)
+* [Testing Navigation](https://developer.android.com/guide/navigation/navigation-testing)
 

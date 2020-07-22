@@ -105,6 +105,7 @@ dependencies {
     androidTestImplementation androidTestDependencies.espressoContrib
     androidTestImplementation generalTestDependencies.junit
     androidTestImplementation generalTestDependencies.coroutinesTest
+    androidTestImplementation androidTestDependencies.navigationTesting
 }
 check.dependsOn ktlint
 

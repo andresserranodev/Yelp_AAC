@@ -25,7 +25,7 @@ object ServiceLocator {
         @VisibleForTesting set
 
     @Volatile
-    var dbusinessDetailsRepository: BusinessDetailsRepository? = null
+    var businessDetailsRepository: BusinessDetailsRepository? = null
         @VisibleForTesting set
 
     fun provideBusinessRepository(context: Context): BusinessRepository {
@@ -39,7 +39,7 @@ object ServiceLocator {
 
     fun provideBusinessDetailsRepository(context: Context): BusinessDetailsRepository {
         synchronized(this) {
-            return dbusinessDetailsRepository
+            return businessDetailsRepository
                 ?: createBusinessDetailsRepository(
                     context
                 )
@@ -98,7 +98,7 @@ object ServiceLocator {
                 provideRemoteFetchBusinessDetailsByIdImpl(),
                 provideLocalDataBaseBusinessDetail(context)
             )
-        dbusinessDetailsRepository = businessDetailsRepositoryImpl
+        businessDetailsRepository = businessDetailsRepositoryImpl
         return businessDetailsRepositoryImpl
     }
 
