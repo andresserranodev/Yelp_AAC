@@ -32,7 +32,7 @@ class BusinessAdapter : ListAdapter<Business, RecyclerView.ViewHolder>(BusinessD
         init {
             binding.setClickListener {
                 binding.business?.let { business ->
-                    //TODO move this into the fragment
+                    // TODO move this into the fragment
                     navigateBussinesDetails(business, it)
                 }
             }
