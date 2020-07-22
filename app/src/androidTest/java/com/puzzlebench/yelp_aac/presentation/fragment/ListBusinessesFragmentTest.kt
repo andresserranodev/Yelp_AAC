@@ -6,7 +6,8 @@ import androidx.navigation.testing.TestNavHostController
 import androidx.recyclerview.widget.RecyclerView
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.espresso.Espresso.onView
-import androidx.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition
+import androidx.test.espresso.action.ViewActions.click
+import androidx.test.espresso.contrib.RecyclerViewActions
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.MediumTest
@@ -16,7 +17,6 @@ import com.puzzlebench.yelp_aac.R
 import com.puzzlebench.yelp_aac.presentation.di.ServiceLocator
 import com.puzzlebench.yelp_aac.repository.BusinessDetailsRepository
 import com.puzzlebench.yelp_aac.repository.BusinessRepository
-import com.puzzlebench.yelp_aac.utils.UtilsAction
 import junit.framework.Assert.assertEquals
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.junit.Test
@@ -47,8 +47,8 @@ class ListBusinessesFragmentTest {
         }
 
         onView(withId(R.id.business_list_rv))
-            .perform(actionOnItemAtPosition<RecyclerView.ViewHolder>
-                (0, UtilsAction.performClickById(R.id.business_cv)))
+            .perform(RecyclerViewActions.actionOnItem<RecyclerView.ViewHolder>(
+                hasDescendant(withText("name1")), click()))
 
         assertEquals(navController.currentDestination?.label, "details_business_fragment")
     }
