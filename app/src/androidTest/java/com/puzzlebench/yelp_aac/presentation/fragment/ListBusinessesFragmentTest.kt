@@ -13,6 +13,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.MediumTest
 import com.puzzlebench.yelp_aac.FakeAndroidTestRepositoryBusiness
 import com.puzzlebench.yelp_aac.FakeAndroidTestRepositoryBusinessOpen
+import com.puzzlebench.yelp_aac.NAME_BUSINES
 import com.puzzlebench.yelp_aac.R
 import com.puzzlebench.yelp_aac.presentation.di.ServiceLocator
 import com.puzzlebench.yelp_aac.repository.BusinessDetailsRepository
@@ -46,9 +47,10 @@ class ListBusinessesFragmentTest {
             Navigation.setViewNavController(fragment.requireView(), navController)
         }
 
+        val itemPosition = 1
         onView(withId(R.id.business_list_rv))
             .perform(RecyclerViewActions.actionOnItem<RecyclerView.ViewHolder>(
-                hasDescendant(withText("name1")), click()))
+                hasDescendant(withText("${NAME_BUSINES}$itemPosition")), click()))
 
         assertEquals(navController.currentDestination?.label, "details_business_fragment")
     }
