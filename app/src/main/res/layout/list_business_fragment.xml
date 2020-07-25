@@ -6,7 +6,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".presentation.fragment.AllPostFragment">
+
         <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/AppBarLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -14,7 +16,7 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:minHeight="?attr/actionBarSize"/>
+                android:minHeight="?attr/actionBarSize" />
         </com.google.android.material.appbar.AppBarLayout>
 
         <ProgressBar
@@ -28,14 +30,34 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:paddingTop="?attr/actionBarSize"
-            android:id="@+id/business_list_rv"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
-            app:spanCount="@integer/spanCount_all_post_list"
-            tools:listitem="@layout/list_business_item"/>
+            android:orientation="vertical"
+            android:paddingTop="?attr/actionBarSize">
+
+            <Spinner
+                android:id="@+id/locales_sp"
+                style="@android:style/Widget.Material.Spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:contextClickable="false"
+                android:padding="10dp"
+                app:layout_anchor="@+id/progressBar"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/business_list_rv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
+                app:spanCount="@integer/spanCount_all_post_list"
+                tools:listitem="@layout/list_business_item" />
+        </LinearLayout>
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

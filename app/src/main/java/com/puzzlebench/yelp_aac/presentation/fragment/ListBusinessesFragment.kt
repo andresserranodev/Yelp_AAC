@@ -7,6 +7,9 @@ import android.view.ViewGroup
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -45,6 +48,7 @@ class ListBusinessesFragment : Fragment() {
             supportActionBar?.show()
         }
         viewModel.getBusiness()
+        initLocationSelector()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -63,6 +67,28 @@ class ListBusinessesFragment : Fragment() {
             }
             is BusinessViewState.ShowErrorMessage -> {
                 displayErrorMessage(businessViewState.message)
+            }
+        }
+    }
+
+    private fun initLocationSelector() {
+        ArrayAdapter.createFromResource(requireContext(), R.array.locations_array, android.R.layout.simple_spinner_item)
+            .also { adapter ->
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            locales_sp.adapter = adapter
+        }
+        locales_sp.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+            }
+
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                parent?.let {
+                    Toast.makeText(
+                        requireContext(),
+                        it.getItemAtPosition(position).toString(),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
             }
         }
     }
