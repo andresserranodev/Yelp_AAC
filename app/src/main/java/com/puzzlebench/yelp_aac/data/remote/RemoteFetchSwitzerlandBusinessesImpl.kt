@@ -13,7 +13,7 @@ class RemoteFetchSwitzerlandBusinessesImpl constructor(
 ) : RemoteFetchSwitzerlandBusinesses {
     override suspend fun fetchSwitzerlandBusiness(): BusinessState = withContext(Dispatchers.IO) {
         return@withContext try {
-            val response = api.getSwitzerlandBusiness().let { baseResponse ->
+            val response = api.getBusinessByLocation("Switzerland").let { baseResponse ->
                 baseResponse.businesses.map {
                     mapper.transformServiceToRepository(it)
                 }
