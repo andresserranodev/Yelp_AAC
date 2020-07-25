@@ -17,7 +17,8 @@ class BusinessRepositoryImpl constructor(
                     localDataBaseBusiness.saveBusiness(it)
                 }
             }
-            remoteBusiness
+            //TODO Improve this using a Support sqlite query
+            localDataBaseBusiness.getBusinessByLocale(locale)
         } else {
             localBusiness
         }

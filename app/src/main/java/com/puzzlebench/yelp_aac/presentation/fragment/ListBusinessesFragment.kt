@@ -25,6 +25,7 @@ import com.puzzlebench.yelp_aac.presentation.di.ViewModelInjector
 import com.puzzlebench.yelp_aac.presentation.viewmodel.state.BusinessViewState
 import com.puzzlebench.yelp_aac.presentation.viewmodel.ListBusinessesViewModel
 import kotlinx.android.synthetic.main.list_business_fragment.*
+import kotlinx.android.synthetic.main.list_business_item.*
 
 class ListBusinessesFragment : Fragment() {
 
@@ -63,6 +64,8 @@ class ListBusinessesFragment : Fragment() {
             is BusinessViewState.ShowBusiness -> {
                 businessAdapter.submitList(businessViewState.business)
                 progressBar.visibility = View.GONE
+                business_list_rv.visibility = View.VISIBLE
+
             }
             is BusinessViewState.ShowErrorMessage -> {
                 displayErrorMessage(businessViewState.message)
@@ -85,6 +88,8 @@ class ListBusinessesFragment : Fragment() {
 
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 parent?.let {
+                    business_list_rv.visibility = View.GONE
+                    progressBar.visibility = View.VISIBLE
                     viewModel.getBusiness(it.getItemAtPosition(position).toString())
                 }
             }
