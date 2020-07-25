@@ -7,14 +7,14 @@ import java.lang.Exception
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-class RemoteFetchBusinessesByLocalImpl constructor(
+class RemoteFetchBusinessesByLocaleImpl constructor(
     private val api: YelpApiV3,
     private val mapper: BusinessMapper
-) : RemoteFetchBusinessesByLocal {
-    override suspend fun fetchBusinessByLocation(local: String): BusinessState =
+) : RemoteFetchBusinessesByLocale {
+    override suspend fun fetchBusinessByLocation(locale: String): BusinessState =
         withContext(Dispatchers.IO) {
             return@withContext try {
-                val response = api.getBusinessByLocation(local).let { baseResponse ->
+                val response = api.getBusinessByLocation(locale).let { baseResponse ->
                     baseResponse.businesses.map {
                         mapper.transformServiceToRepository(it)
                     }

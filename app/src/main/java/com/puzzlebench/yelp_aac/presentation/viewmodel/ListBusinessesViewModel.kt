@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.puzzlebench.yelp_aac.presentation.viewmodel.state.BusinessViewState
 import com.puzzlebench.yelp_aac.repository.BusinessRepository
-import com.puzzlebench.yelp_aac.repository.LOCAL_DEFAULT
+import com.puzzlebench.yelp_aac.repository.LOCALE_DEFAULT
 import kotlinx.coroutines.launch
 
 class ListBusinessesViewModel internal constructor(private val businessRepository: BusinessRepository) :
@@ -16,7 +16,7 @@ class ListBusinessesViewModel internal constructor(private val businessRepositor
     val businessState: LiveData<BusinessViewState>
         get() = businessMutable
 
-    fun getBusiness(location: String = LOCAL_DEFAULT) {
+    fun getBusiness(location: String = LOCALE_DEFAULT) {
         viewModelScope.launch {
             val businessData = businessRepository.getBusiness(location)
             if (businessData.error.isEmpty()) {

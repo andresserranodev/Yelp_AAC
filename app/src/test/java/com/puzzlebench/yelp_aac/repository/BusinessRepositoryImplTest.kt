@@ -7,7 +7,7 @@ import com.puzzlebench.yelp_aac.DummyBusinessFactory.getBussinesStateEmpty
 import com.puzzlebench.yelp_aac.DummyBusinessFactory.getBussinesStateError
 import com.puzzlebench.yelp_aac.DummyBusinessFactory.getBussinesStateNoError
 import com.puzzlebench.yelp_aac.data.local.LocalDataBaseBusiness
-import com.puzzlebench.yelp_aac.data.remote.RemoteFetchBusinessesByLocal
+import com.puzzlebench.yelp_aac.data.remote.RemoteFetchBusinessesByLocale
 import com.puzzlebench.yelp_aac.repository.model.NO_ERROR
 import kotlinx.coroutines.runBlocking
 import org.junit.Test
@@ -20,8 +20,8 @@ class BusinessRepositoryImplTest {
     @Test
     fun `test empty local data`() {
         val serviceResponse = getBussinesStateNoError()
-        val fetchSwitzerlandBusinesses = mock<RemoteFetchBusinessesByLocal> {
-            onBlocking { fetchBusinessByLocation(LOCAL_DEFAULT) } doReturn serviceResponse
+        val fetchSwitzerlandBusinesses = mock<RemoteFetchBusinessesByLocale> {
+            onBlocking { fetchBusinessByLocation(LOCALE_DEFAULT) } doReturn serviceResponse
         }
 
         val businessLocalData = mock<LocalDataBaseBusiness> {
@@ -30,9 +30,9 @@ class BusinessRepositoryImplTest {
         businessRepositoryImpl =
             BusinessRepositoryImpl(fetchSwitzerlandBusinesses, businessLocalData)
         runBlocking {
-            businessRepositoryImpl.getBusiness(LOCAL_DEFAULT)
+            businessRepositoryImpl.getBusiness(LOCALE_DEFAULT)
             verify(businessLocalData).getBusiness()
-            verify(fetchSwitzerlandBusinesses).fetchBusinessByLocation(LOCAL_DEFAULT)
+            verify(fetchSwitzerlandBusinesses).fetchBusinessByLocation(LOCALE_DEFAULT)
             serviceResponse.businesses.forEach {
                 verify(businessLocalData).saveBusiness(it)
             }
@@ -41,24 +41,24 @@ class BusinessRepositoryImplTest {
 
     @Test
     fun `test get local data`() {
-        val fetchSwitzerlandBusinesses = mock<RemoteFetchBusinessesByLocal>()
+        val fetchSwitzerlandBusinesses = mock<RemoteFetchBusinessesByLocale>()
         val businessLocalData = mock<LocalDataBaseBusiness> {
             onBlocking { getBusiness() } doReturn getBussinesStateNoError()
         }
         businessRepositoryImpl =
             BusinessRepositoryImpl(fetchSwitzerlandBusinesses, businessLocalData)
         runBlocking {
-            businessRepositoryImpl.getBusiness(LOCAL_DEFAULT)
+            businessRepositoryImpl.getBusiness(LOCALE_DEFAULT)
             verify(businessLocalData).getBusiness()
-            assertEquals(businessRepositoryImpl.getBusiness(LOCAL_DEFAULT).error, NO_ERROR)
+            assertEquals(businessRepositoryImpl.getBusiness(LOCALE_DEFAULT).error, NO_ERROR)
         }
     }
 
     @Test
     fun `test error getting local data`() {
         val serviceResponse = getBussinesStateError()
-        val fetchSwitzerlandBusinesses = mock<RemoteFetchBusinessesByLocal> {
-            onBlocking { fetchBusinessByLocation(LOCAL_DEFAULT) } doReturn serviceResponse
+        val fetchSwitzerlandBusinesses = mock<RemoteFetchBusinessesByLocale> {
+            onBlocking { fetchBusinessByLocation(LOCALE_DEFAULT) } doReturn serviceResponse
         }
 
         val businessLocalData = mock<LocalDataBaseBusiness> {
@@ -67,10 +67,10 @@ class BusinessRepositoryImplTest {
         businessRepositoryImpl =
             BusinessRepositoryImpl(fetchSwitzerlandBusinesses, businessLocalData)
         runBlocking {
-            businessRepositoryImpl.getBusiness(LOCAL_DEFAULT)
+            businessRepositoryImpl.getBusiness(LOCALE_DEFAULT)
             verify(businessLocalData).getBusiness()
-            verify(fetchSwitzerlandBusinesses).fetchBusinessByLocation(LOCAL_DEFAULT)
-            assertEquals(businessRepositoryImpl.getBusiness(LOCAL_DEFAULT).error, "Error")
+            verify(fetchSwitzerlandBusinesses).fetchBusinessByLocation(LOCALE_DEFAULT)
+            assertEquals(businessRepositoryImpl.getBusiness(LOCALE_DEFAULT).error, "Error")
         }
     }
 }
