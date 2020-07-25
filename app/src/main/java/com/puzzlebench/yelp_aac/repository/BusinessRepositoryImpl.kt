@@ -8,10 +8,10 @@ class BusinessRepositoryImpl constructor(
     private val remoteFetchBusinessesByLocale: RemoteFetchBusinessesByLocale,
     private val localDataBaseBusiness: LocalDataBaseBusiness
 ) : BusinessRepository {
-    override suspend fun getBusiness(local :String): BusinessState {
+    override suspend fun getBusiness(locale :String): BusinessState {
         val localBusiness = localDataBaseBusiness.getBusiness()
         return if (localBusiness.businesses.isEmpty()) {
-            val remoteBusiness = remoteFetchBusinessesByLocale.fetchBusinessByLocation(local)
+            val remoteBusiness = remoteFetchBusinessesByLocale.fetchBusinessByLocation(locale)
             if (remoteBusiness.error.isEmpty()) {
                 remoteBusiness.businesses.map {
                     localDataBaseBusiness.saveBusiness(it)

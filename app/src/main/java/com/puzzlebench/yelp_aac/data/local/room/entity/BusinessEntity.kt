@@ -7,7 +7,6 @@ import androidx.room.PrimaryKey
 data class BusinessEntity constructor(
     @PrimaryKey var businessId: String,
     val name: String,
-    val local: String,
     val imageUrl: String,
     val displayPhone: String,
     val displayAddress: String,

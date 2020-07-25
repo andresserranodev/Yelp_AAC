@@ -7,7 +7,7 @@ import com.puzzlebench.yelp_aac.presentation.model.Business
 const val NAME_BUSINES = "name"
 
 class FakeAndroidTestRepositoryBusiness : BusinessRepository {
-    override suspend fun getBusiness(local:String): BusinessState {
+    override suspend fun getBusiness(locale:String): BusinessState {
         return BusinessState(getDummyListBusiness())
     }
 
