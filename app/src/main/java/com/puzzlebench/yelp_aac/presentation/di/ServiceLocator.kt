@@ -11,8 +11,8 @@ import com.puzzlebench.yelp_aac.data.local.room.YelpDataBase
 import com.puzzlebench.yelp_aac.data.mapper.BusinessDetailMapper
 import com.puzzlebench.yelp_aac.data.mapper.BusinessMapper
 import com.puzzlebench.yelp_aac.data.remote.RemoteFetchBusinessDetailsByIdImpl
-import com.puzzlebench.yelp_aac.data.remote.RemoteFetchBusinessesByLocation
-import com.puzzlebench.yelp_aac.data.remote.RemoteFetchBusinessesByLocationImpl
+import com.puzzlebench.yelp_aac.data.remote.RemoteFetchBusinessesByLocal
+import com.puzzlebench.yelp_aac.data.remote.RemoteFetchBusinessesByLocalImpl
 import com.puzzlebench.yelp_aac.data.remote.retrofit.RetrofitClient
 import com.puzzlebench.yelp_aac.repository.*
 
@@ -46,8 +46,8 @@ object ServiceLocator {
         }
     }
 
-    private fun provideRemoteFetchSwitzerlandBusinesses(): RemoteFetchBusinessesByLocation {
-        return RemoteFetchBusinessesByLocationImpl(
+    private fun provideRemoteFetchSwitzerlandBusinesses(): RemoteFetchBusinessesByLocal {
+        return RemoteFetchBusinessesByLocalImpl(
             provideYelpApiV3(),
             provideBusinessMapper()
         )

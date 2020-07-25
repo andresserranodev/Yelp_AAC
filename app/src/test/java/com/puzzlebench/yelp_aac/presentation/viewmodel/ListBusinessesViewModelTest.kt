@@ -6,7 +6,7 @@ import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.verify
 import com.puzzlebench.yelp_aac.DummyBusinessFactory.getBussinesStateNoError
 import com.puzzlebench.yelp_aac.repository.BusinessRepository
-import com.puzzlebench.yelp_aac.repository.DEFAULT_LOCATION
+import com.puzzlebench.yelp_aac.repository.LOCAL_DEFAULT
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
@@ -24,7 +24,7 @@ class ListBusinessesViewModelTest {
     private lateinit var listBusinessesViewModel: ListBusinessesViewModel
 
     private val businessRepository = mock<BusinessRepository> {
-        onBlocking { getBusiness(DEFAULT_LOCATION) } doReturn getBussinesStateNoError()
+        onBlocking { getBusiness(LOCAL_DEFAULT) } doReturn getBussinesStateNoError()
     }
 
     @Before
@@ -36,7 +36,7 @@ class ListBusinessesViewModelTest {
     fun getBusiness() {
         listBusinessesViewModel.getBusiness()
         runBlocking {
-            verify(businessRepository).getBusiness(DEFAULT_LOCATION)
+            verify(businessRepository).getBusiness(LOCAL_DEFAULT)
         }
     }
 }
