@@ -47,7 +47,6 @@ class ListBusinessesFragment : Fragment() {
             setSupportActionBar(toolbar)
             supportActionBar?.show()
         }
-        viewModel.getBusiness()
         initLocationSelector()
     }
 
@@ -72,22 +71,21 @@ class ListBusinessesFragment : Fragment() {
     }
 
     private fun initLocationSelector() {
-        ArrayAdapter.createFromResource(requireContext(), R.array.locations_array, android.R.layout.simple_spinner_item)
-            .also { adapter ->
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            locales_sp.adapter = adapter
-        }
+        ArrayAdapter.createFromResource(
+            requireContext(),
+            R.array.locations_array,
+            android.R.layout.simple_spinner_item
+        ).also { adapter ->
+                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                locales_sp.adapter = adapter
+            }
         locales_sp.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(parent: AdapterView<*>?) {
             }
 
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 parent?.let {
-                    Toast.makeText(
-                        requireContext(),
-                        it.getItemAtPosition(position).toString(),
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    viewModel.getBusiness(it.getItemAtPosition(position).toString())
                 }
             }
         }

@@ -6,30 +6,30 @@ import com.nhaarman.mockitokotlin2.verify
 import com.puzzlebench.yelp_aac.DummyBusinessFactory.getDummyYepResponse
 import com.puzzlebench.yelp_aac.data.mapper.BusinessMapper
 import com.puzzlebench.yelp_aac.data.remote.retrofit.YelpApiV3
+import com.puzzlebench.yelp_aac.repository.DEFAULT_LOCATION
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Test
-
-class RemoteFetchSwitzerlandBusinessesImplTest {
-    private lateinit var remoteFetchSwitzerlandBusinesses: RemoteFetchSwitzerlandBusinesses
+class RemoteFetchBusinessesByLocationImplTest {
+    private lateinit var remoteFetchBusinessesByLocation: RemoteFetchBusinessesByLocation
 
     private val serviceResponse = getDummyYepResponse()
     private val service = mock<YelpApiV3> {
-        onBlocking { getSwitzerlandBusiness() } doReturn serviceResponse
+        onBlocking { getBusinessByLocation(DEFAULT_LOCATION) } doReturn serviceResponse
     }
     private var businessMapper = mock<BusinessMapper>()
 
     @Before
     fun setUp() {
-        remoteFetchSwitzerlandBusinesses =
-            RemoteFetchSwitzerlandBusinessesImpl(service, businessMapper)
+        remoteFetchBusinessesByLocation =
+            RemoteFetchBusinessesByLocationImpl(service, businessMapper)
     }
 
     @Test
     fun getSwitzerlandBusiness() {
         runBlocking {
-            remoteFetchSwitzerlandBusinesses.fetchSwitzerlandBusiness()
-            verify(service).getSwitzerlandBusiness()
+            remoteFetchBusinessesByLocation.fetchBusinessByLocation(DEFAULT_LOCATION)
+            verify(service).getBusinessByLocation(DEFAULT_LOCATION)
             serviceResponse.businesses.forEach {
                 verify(businessMapper).transformServiceToRepository(it)
             }
