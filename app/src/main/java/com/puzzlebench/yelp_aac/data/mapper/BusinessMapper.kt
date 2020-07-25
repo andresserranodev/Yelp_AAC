@@ -3,6 +3,7 @@ package com.puzzlebench.yelp_aac.data.mapper
 import com.puzzlebench.yelp_aac.data.local.room.entity.BusinessEntity
 import com.puzzlebench.yelp_aac.data.remote.retrofit.BusinessResponse
 import com.puzzlebench.yelp_aac.presentation.model.Business
+import com.puzzlebench.yelp_aac.repository.LOCALE_DEFAULT
 
 class BusinessMapper : BaseMapperData<BusinessResponse, Business, BusinessEntity> {
 
@@ -15,7 +16,8 @@ class BusinessMapper : BaseMapperData<BusinessResponse, Business, BusinessEntity
             repository.displayAddress,
             repository.isClosed,
             repository.rating,
-            repository.price
+            repository.price,
+            repository.locale
         )
 
     override fun transformEntityToRepository(entity: BusinessEntity) =
@@ -27,7 +29,8 @@ class BusinessMapper : BaseMapperData<BusinessResponse, Business, BusinessEntity
             entity.displayAddress,
             entity.isClosed,
             entity.rating,
-            entity.price
+            entity.price,
+            entity.locale
         )
 
     override fun transformServiceToRepository(service: BusinessResponse) =
@@ -39,7 +42,8 @@ class BusinessMapper : BaseMapperData<BusinessResponse, Business, BusinessEntity
             service.location.address1,
             service.isClosed,
             service.rating,
-            getPrice(service.price)
+            getPrice(service.price),
+            LOCALE_DEFAULT
         )
 
     private fun getPrice(price: String?): String {

@@ -18,14 +18,23 @@ class LocalDataBaseBusinessImpl internal constructor(
     override suspend fun getBusiness(): BusinessState = withContext(ioDispatcher) {
         return@withContext try {
             BusinessState(businessDao.getBusiness().map {
-                mapper.transformEntityToRepository(
-                    it
-                )
+                mapper.transformEntityToRepository(it)
             })
         } catch (e: Exception) {
             BusinessState(listOf(), e.message ?: UNDEFINED_ERROR_LOCAL_DATA_BASE_BUSINESS)
         }
     }
+
+    override suspend fun getBusinessByLocale(locale: String): BusinessState =
+        withContext(ioDispatcher) {
+            return@withContext try {
+                BusinessState(businessDao.getBusinessByLocale(locale).map {
+                    mapper.transformEntityToRepository(it)
+                })
+            } catch (e: Exception) {
+                BusinessState(listOf(), e.message ?: UNDEFINED_ERROR_LOCAL_DATA_BASE_BUSINESS)
+            }
+        }
 
     override suspend fun saveBusiness(business: Business) {
         businessDao.insertBusiness(mapper.transformRepositoryToEntity(business))

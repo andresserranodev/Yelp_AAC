@@ -2,6 +2,7 @@ package com.puzzlebench.yelp_aac.data.remote
 
 import com.puzzlebench.yelp_aac.data.mapper.BusinessMapper
 import com.puzzlebench.yelp_aac.data.remote.retrofit.YelpApiV3
+import com.puzzlebench.yelp_aac.data.remote.retrofit.transformServiceToRepository
 import com.puzzlebench.yelp_aac.repository.model.BusinessState
 import java.lang.Exception
 import kotlinx.coroutines.Dispatchers
@@ -16,7 +17,7 @@ class RemoteFetchBusinessesByLocaleImpl constructor(
             return@withContext try {
                 val response = api.getBusinessByLocation(locale).let { baseResponse ->
                     baseResponse.businesses.map {
-                        mapper.transformServiceToRepository(it)
+                        it.transformServiceToRepository(locale)
                     }
                 }
                 BusinessState(response)

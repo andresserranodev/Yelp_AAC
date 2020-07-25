@@ -13,6 +13,10 @@ interface BusinessDao {
     @Query("SELECT * FROM BUSINESS_TABLE")
     suspend fun getBusiness(): List<BusinessEntity>
 
+
+    @Query("SELECT * FROM BUSINESS_TABLE WHERE locale = :locale")
+    suspend fun getBusinessByLocale(locale: String): List<BusinessEntity>
+
     @Query("SELECT * from BUSINESS_TABLE WHERE businessId = :businessId")
     fun getBusinessById(businessId: String): LiveData<BusinessEntity>
 
