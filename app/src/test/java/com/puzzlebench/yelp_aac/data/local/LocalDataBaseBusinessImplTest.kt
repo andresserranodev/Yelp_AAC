@@ -7,6 +7,7 @@ import com.puzzlebench.yelp_aac.DummyBusinessFactory.getDummyBusiness
 import com.puzzlebench.yelp_aac.DummyBusinessFactory.getDummyListBusinessEntity
 import com.puzzlebench.yelp_aac.data.local.room.dao.BusinessDao
 import com.puzzlebench.yelp_aac.data.mapper.BusinessMapper
+import com.puzzlebench.yelp_aac.repository.LOCALE_DEFAULT
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Test
@@ -17,7 +18,7 @@ class LocalDataBaseBusinessImplTest {
     private val businessEntity = getDummyListBusinessEntity()
 
     private val businessDao = mock<BusinessDao> {
-        onBlocking { getBusiness() } doReturn businessEntity
+        onBlocking { getBusinessByLocale(LOCALE_DEFAULT) } doReturn businessEntity
     }
     private var businessMapper = mock<BusinessMapper>()
 
@@ -29,8 +30,8 @@ class LocalDataBaseBusinessImplTest {
     @Test
     fun getBusiness() {
         runBlocking {
-            businessLocalDataBaseDataImpl.getBusiness()
-            verify(businessDao).getBusiness()
+            businessLocalDataBaseDataImpl.getBusinessByLocale(LOCALE_DEFAULT)
+            verify(businessDao).getBusinessByLocale(LOCALE_DEFAULT)
             businessEntity.forEach {
                 verify(businessMapper).transformEntityToRepository(it)
             }
