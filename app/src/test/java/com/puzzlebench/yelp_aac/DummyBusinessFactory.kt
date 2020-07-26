@@ -14,6 +14,7 @@ object DummyBusinessFactory {
     const val DISPLAY_PHONE = "(121)-3123132"
     const val DISPLAY_ADDRESS = "dasdadsada"
     const val PRICE = "$$$"
+    const val LOCALE = "locale"
 
     fun getDummyYepResponse() = YelpResponse(getDummyListBusinessResponse())
 
@@ -22,7 +23,7 @@ object DummyBusinessFactory {
         "$BASE_NAME$seed",
         "$IMAGE_URL$seed",
         "$DISPLAY_PHONE$seed",
-        true,
+        true, 
         Location(DISPLAY_ADDRESS),
         4.5F,
         PRICE
@@ -37,6 +38,7 @@ object DummyBusinessFactory {
         Location(DISPLAY_ADDRESS),
         4.5F,
         null
+
     )
 
     fun getDummyBusinessEntity(seed: String) =
@@ -48,7 +50,8 @@ object DummyBusinessFactory {
             "$DISPLAY_ADDRESS$seed",
             true,
             4.5F,
-            "$PRICE$seed"
+            "$PRICE$seed",
+            "$LOCALE$seed"
         )
 
     fun getDummyListBusinessEntity(): List<BusinessEntity> = (1..20).map {
@@ -67,7 +70,9 @@ object DummyBusinessFactory {
         "$DISPLAY_ADDRESS$seed",
         true,
         4.5F,
-        "$PRICE$seed"
+        "$PRICE$seed",
+        "$LOCALE$seed"
+
     )
 
     fun getBussinesStateError() = BusinessState(listOf(), "Error")

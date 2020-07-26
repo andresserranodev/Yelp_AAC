@@ -9,7 +9,6 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -65,7 +64,6 @@ class ListBusinessesFragment : Fragment() {
                 businessAdapter.submitList(businessViewState.business)
                 progressBar.visibility = View.GONE
                 business_list_rv.visibility = View.VISIBLE
-
             }
             is BusinessViewState.ShowErrorMessage -> {
                 displayErrorMessage(businessViewState.message)

@@ -2,6 +2,7 @@ package com.puzzlebench.yelp_aac.repository
 
 import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.mock
+import com.nhaarman.mockitokotlin2.times
 import com.nhaarman.mockitokotlin2.verify
 import com.puzzlebench.yelp_aac.DummyBusinessFactory.getBussinesStateEmpty
 import com.puzzlebench.yelp_aac.DummyBusinessFactory.getBussinesStateError
@@ -25,13 +26,13 @@ class BusinessRepositoryImplTest {
         }
 
         val businessLocalData = mock<LocalDataBaseBusiness> {
-            onBlocking { getBusiness() } doReturn getBussinesStateEmpty()
+            onBlocking { getBusinessByLocale(LOCALE_DEFAULT) } doReturn getBussinesStateEmpty()
         }
         businessRepositoryImpl =
             BusinessRepositoryImpl(fetchSwitzerlandBusinesses, businessLocalData)
         runBlocking {
             businessRepositoryImpl.getBusiness(LOCALE_DEFAULT)
-            verify(businessLocalData).getBusiness()
+            verify(businessLocalData, times(2)).getBusinessByLocale(LOCALE_DEFAULT)
             verify(fetchSwitzerlandBusinesses).fetchBusinessByLocation(LOCALE_DEFAULT)
             serviceResponse.businesses.forEach {
                 verify(businessLocalData).saveBusiness(it)
@@ -43,13 +44,13 @@ class BusinessRepositoryImplTest {
     fun `test get local data`() {
         val fetchSwitzerlandBusinesses = mock<RemoteFetchBusinessesByLocale>()
         val businessLocalData = mock<LocalDataBaseBusiness> {
-            onBlocking { getBusiness() } doReturn getBussinesStateNoError()
+            onBlocking { getBusinessByLocale(LOCALE_DEFAULT) } doReturn getBussinesStateNoError()
         }
         businessRepositoryImpl =
             BusinessRepositoryImpl(fetchSwitzerlandBusinesses, businessLocalData)
         runBlocking {
             businessRepositoryImpl.getBusiness(LOCALE_DEFAULT)
-            verify(businessLocalData).getBusiness()
+            verify(businessLocalData,times(1)).getBusinessByLocale(LOCALE_DEFAULT)
             assertEquals(businessRepositoryImpl.getBusiness(LOCALE_DEFAULT).error, NO_ERROR)
         }
     }
@@ -62,13 +63,13 @@ class BusinessRepositoryImplTest {
         }
 
         val businessLocalData = mock<LocalDataBaseBusiness> {
-            onBlocking { getBusiness() } doReturn getBussinesStateError()
+            onBlocking { getBusinessByLocale(LOCALE_DEFAULT) } doReturn getBussinesStateError()
         }
         businessRepositoryImpl =
             BusinessRepositoryImpl(fetchSwitzerlandBusinesses, businessLocalData)
         runBlocking {
             businessRepositoryImpl.getBusiness(LOCALE_DEFAULT)
-            verify(businessLocalData).getBusiness()
+            verify(businessLocalData, times(2)).getBusinessByLocale(LOCALE_DEFAULT)
             verify(fetchSwitzerlandBusinesses).fetchBusinessByLocation(LOCALE_DEFAULT)
             assertEquals(businessRepositoryImpl.getBusiness(LOCALE_DEFAULT).error, "Error")
         }

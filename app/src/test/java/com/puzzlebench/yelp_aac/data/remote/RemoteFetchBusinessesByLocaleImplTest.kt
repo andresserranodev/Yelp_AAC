@@ -6,6 +6,7 @@ import com.nhaarman.mockitokotlin2.verify
 import com.puzzlebench.yelp_aac.DummyBusinessFactory.getDummyYepResponse
 import com.puzzlebench.yelp_aac.data.mapper.BusinessMapper
 import com.puzzlebench.yelp_aac.data.remote.retrofit.YelpApiV3
+import com.puzzlebench.yelp_aac.data.remote.retrofit.transformServiceToRepository
 import com.puzzlebench.yelp_aac.repository.LOCALE_DEFAULT
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
@@ -30,9 +31,6 @@ class RemoteFetchBusinessesByLocaleImplTest {
         runBlocking {
             remoteFetchBusinessesByLocale.fetchBusinessByLocation(LOCALE_DEFAULT)
             verify(service).getBusinessByLocation(LOCALE_DEFAULT)
-            serviceResponse.businesses.forEach {
-                verify(businessMapper).transformServiceToRepository(it)
-            }
         }
     }
 }

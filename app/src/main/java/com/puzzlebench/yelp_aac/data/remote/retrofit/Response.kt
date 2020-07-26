@@ -3,7 +3,6 @@ package com.puzzlebench.yelp_aac.data.remote.retrofit
 import com.google.gson.annotations.SerializedName
 import com.puzzlebench.yelp_aac.data.mapper.PRICE_EMPTY_VALUE
 import com.puzzlebench.yelp_aac.presentation.model.Business
-import com.puzzlebench.yelp_aac.repository.LOCALE_DEFAULT
 
 class BusinessResponse(
     @SerializedName("id") val businessId: String,

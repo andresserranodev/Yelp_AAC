@@ -13,5 +13,5 @@ data class BusinessEntity constructor(
     val isClosed: Boolean,
     val rating: Float,
     val price: String,
-    val locale:String
+    val locale: String
 )
