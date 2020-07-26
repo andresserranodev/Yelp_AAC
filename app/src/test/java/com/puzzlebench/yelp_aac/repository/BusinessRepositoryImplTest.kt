@@ -50,7 +50,7 @@ class BusinessRepositoryImplTest {
             BusinessRepositoryImpl(fetchSwitzerlandBusinesses, businessLocalData)
         runBlocking {
             businessRepositoryImpl.getBusiness(LOCALE_DEFAULT)
-            verify(businessLocalData,times(1)).getBusinessByLocale(LOCALE_DEFAULT)
+            verify(businessLocalData, times(1)).getBusinessByLocale(LOCALE_DEFAULT)
             assertEquals(businessRepositoryImpl.getBusiness(LOCALE_DEFAULT).error, NO_ERROR)
         }
     }

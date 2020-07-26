@@ -23,7 +23,7 @@ object DummyBusinessFactory {
         "$BASE_NAME$seed",
         "$IMAGE_URL$seed",
         "$DISPLAY_PHONE$seed",
-        true, 
+        true,
         Location(DISPLAY_ADDRESS),
         4.5F,
         PRICE
