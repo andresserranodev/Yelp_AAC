@@ -11,6 +11,7 @@ object DummyBusinessFactoryAndroid {
     const val DISPLAY_PHONE = "(121)-3123132"
     const val DISPLAY_ADDRESS = "dasdadsada"
     const val PRICE = "$$$"
+    const val LOCAL = "local"
 
     fun getDummyBusinessResponseIsClose(seed: String) = Business(
         "$BUSINESS_ID$seed",
@@ -20,7 +21,8 @@ object DummyBusinessFactoryAndroid {
         "$DISPLAY_ADDRESS$seed",
         true,
         4.5F,
-        PRICE
+        PRICE,
+        LOCAL
     )
 
     fun getDummyBusinessResponseIsOpen(seed: String) = Business(
@@ -31,7 +33,8 @@ object DummyBusinessFactoryAndroid {
         "$DISPLAY_ADDRESS$seed",
         false,
         4.5F,
-        PRICE
+        PRICE,
+        LOCAL
     )
 
     fun getDyummyBusinessDetailsState() = BusinessDetailsState(

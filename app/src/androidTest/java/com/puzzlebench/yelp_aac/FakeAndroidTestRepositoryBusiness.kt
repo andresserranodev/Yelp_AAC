@@ -23,6 +23,7 @@ class FakeAndroidTestRepositoryBusiness : BusinessRepository {
         "${"DummyBusinessFactory.DISPLAY_ADDRESS"}$seed",
         true,
         4.5F,
-        "${"DummyBusinessFactory.PRICE"}$seed"
+        "${"DummyBusinessFactory.PRICE"}$seed",
+        "${"locale"}$seed"
     )
 }
