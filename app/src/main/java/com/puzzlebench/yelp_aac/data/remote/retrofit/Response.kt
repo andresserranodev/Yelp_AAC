@@ -1,6 +1,8 @@
 package com.puzzlebench.yelp_aac.data.remote.retrofit
 
 import com.google.gson.annotations.SerializedName
+import com.puzzlebench.yelp_aac.data.mapper.PRICE_EMPTY_VALUE
+import com.puzzlebench.yelp_aac.presentation.model.Business
 
 class BusinessResponse(
     @SerializedName("id") val businessId: String,
@@ -11,6 +13,18 @@ class BusinessResponse(
     val location: Location,
     val rating: Float,
     val price: String?
+)
+
+fun BusinessResponse.transformServiceToRepository(locale: String): Business = Business(
+    this.businessId,
+    this.name,
+    this.imageUrl,
+    this.displayPhone,
+    this.location.address1,
+    this.isClosed,
+    this.rating,
+    this.price ?: PRICE_EMPTY_VALUE,
+    locale
 )
 
 class YelpResponse(val businesses: List<BusinessResponse>)

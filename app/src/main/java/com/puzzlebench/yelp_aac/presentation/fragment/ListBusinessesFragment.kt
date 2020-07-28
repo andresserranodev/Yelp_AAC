@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -22,6 +24,7 @@ import com.puzzlebench.yelp_aac.presentation.di.ViewModelInjector
 import com.puzzlebench.yelp_aac.presentation.viewmodel.state.BusinessViewState
 import com.puzzlebench.yelp_aac.presentation.viewmodel.ListBusinessesViewModel
 import kotlinx.android.synthetic.main.list_business_fragment.*
+import kotlinx.android.synthetic.main.list_business_item.*
 
 class ListBusinessesFragment : Fragment() {
 
@@ -44,7 +47,7 @@ class ListBusinessesFragment : Fragment() {
             setSupportActionBar(toolbar)
             supportActionBar?.show()
         }
-        viewModel.getBusiness()
+        initLocationSelector()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -60,9 +63,33 @@ class ListBusinessesFragment : Fragment() {
             is BusinessViewState.ShowBusiness -> {
                 businessAdapter.submitList(businessViewState.business)
                 progressBar.visibility = View.GONE
+                business_list_rv.visibility = View.VISIBLE
             }
             is BusinessViewState.ShowErrorMessage -> {
                 displayErrorMessage(businessViewState.message)
+            }
+        }
+    }
+
+    private fun initLocationSelector() {
+        ArrayAdapter.createFromResource(
+            requireContext(),
+            R.array.locations_array,
+            android.R.layout.simple_spinner_item
+        ).also { adapter ->
+                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                locales_sp.adapter = adapter
+            }
+        locales_sp.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+            }
+
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                parent?.let {
+                    business_list_rv.visibility = View.GONE
+                    progressBar.visibility = View.VISIBLE
+                    viewModel.getBusiness(it.getItemAtPosition(position).toString())
+                }
             }
         }
     }

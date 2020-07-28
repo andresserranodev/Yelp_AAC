@@ -29,4 +29,40 @@
     <string name="syc_notification_channel_name" translatable="true">Syc</string>
     <string name="notification_title">Updating…</string>
     <string name="notification_content">we are updating the list of bushiness</string>
+
+    <!-- API Supported Locales https://www.yelp.com/developers/documentation/v3/supported_locales -->
+    <string-array name="locations_array">
+        <item>Switzerland</item>
+        <item>Czech Republic</item>
+        <item>Denmark</item>
+        <item>Austria</item>
+        <item>Germany</item>
+        <item>Australia</item>
+        <item>Belgium</item>
+        <item>Canada</item>
+        <item>United Kingdom</item>
+        <item>Hong Kong</item>
+        <item>Republic of Ireland</item>
+        <item>Malaysia</item>
+        <item>New Zealand</item>
+        <item>Philippines</item>
+        <item>Singapore</item>
+        <item>United States</item>
+        <item>Argentina</item>
+        <item>Chile</item>
+        <item>Spain</item>
+        <item>Mexico</item>
+        <item>Finland</item>
+        <item>Philippines</item>
+        <item>France</item>
+        <item>Italy</item>
+        <item>Japan</item>
+        <item>Norway</item>
+        <item>The Netherlands</item>
+        <item>Poland</item>
+        <item>Brazil</item>
+        <item>Portugal</item>
+        <item>Sweden</item>
+        <item>Taiwan</item>
+    </string-array>
 </resources>
