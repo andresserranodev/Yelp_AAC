@@ -64,7 +64,7 @@ class DetailsBusinessFragmentTest {
         )
         onView(ViewMatchers.withId(R.id.tv_business_status_close)).check(
             matches(
-                withEffectiveVisibility(ViewMatchers.Visibility.GONE)
+                withEffectiveVisibility(ViewMatchers.Visibility.VISIBLE)
             )
         )
     }
