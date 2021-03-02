@@ -1,22 +1,15 @@
-apply plugin: 'jacoco'
+apply plugin: 'jacoco-android'
 
 jacoco {
-    toolVersion = "0.7.9"
-    reportsDir = file("$buildDir/reports")
+    toolVersion = "0.8.4"
 }
 
-task jacocoTestReport(type: JacocoReport, dependsOn: "testDebugUnitTest") {
-    group = "Reporting"
-    description = "Generate Jacoco coverage reports for Debug build"
+tasks.withType(Test) {
+    jacoco.includeNoLocationClasses = true
+}
 
-    reports {
-        xml.enabled = true
-        html.enabled = true
-    }
-
-    // what to exclude from coverage report
-    // UI, "noise", generated classes, platform classes, etc.
-    def excludes = [
+jacocoAndroidUnitTestReport {
+    excludes += [
             '**/R.class',
             '**/R$*.class',
             '**/*$ViewInjector*.*',
@@ -31,21 +24,12 @@ task jacocoTestReport(type: JacocoReport, dependsOn: "testDebugUnitTest") {
             '**/room/**',
             '**/retrofit/**',
             '**/factory/**',
-            '**/state/**'
+            '**/state/**',
+            '**/databinding/**',
+            '**/DataBinderMapperImpl.class',
+            '**/DataBindingTriggerClass.class',
+            '**/DataBindingInfo.class',
+            '**/BR.class',
+            '**/*DataBinderMapperImpl*.*'
     ]
-    // generated classes
-    classDirectories = fileTree(
-            dir: "$buildDir/intermediates/classes/debug",
-            excludes: excludes
-    ) + fileTree(
-            dir: "$buildDir/tmp/kotlin-classes/debug",
-            excludes: excludes
-    )
-
-
-    // sources
-    sourceDirectories = files([
-            "src/main/kotlin"
-    ])
-    executionData = files("$buildDir/jacoco/testDebugUnitTest.exec")
 }
